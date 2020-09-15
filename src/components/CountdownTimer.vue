@@ -1,19 +1,19 @@
 <template>
     <div class="time-block">
         <div class="time-block-item">
-            <p class="figures">{{ days }}</p>
+            <p class="figures">{{ Math.trunc(days) }}</p>
             <p class="unit-name">Days</p>
         </div>
         <div class="time-block-item">
-            <p class="figures">{{ hours }}</p>
+            <p class="figures">{{ Math.trunc(hours) }}</p>
             <p class="unit-name">Hrs</p>
         </div>
         <div class="time-block-item">
-            <p class="figures">{{ minutes }}</p>
+            <p class="figures">{{ Math.trunc(minutes) }}</p>
             <p class="unit-name">Mins</p>
         </div>
         <div class="time-block-item">
-            <p class="figures">{{ seconds }}</p>
+            <p class="figures">{{ Math.trunc(seconds) }}</p>
             <p class="unit-name">Secs</p>
         </div>
     </div>
@@ -22,37 +22,37 @@
     export default {
         data() {
             return {
-                days: 25,
-                hours: 10,
-                minutes: 45,
-                seconds: 30,
+                now: 0,
+                count: 0,
+                date: 'October 31, 2020'
             }
         },
         methods: {
-            showRemaining() {
-                const timer = setInterval(() => {
-                    const now = new Date()
-                    const end = new Date(2020, 4, 22, 10, 10, 10, 10)
-                    const ditance = end.getTime() - now.getTime()
-
-                    if(ditance < 0) {
-                        clearInterval(timer)
-                    }
-                })
-
-            }
+            timer_loop() {
+                this.count++
+                this.now = Math.trunc(new Date().getTime() / 1000)
+                this.count < 200 && setTimeout(this.timer_loop, 1000)
+            },
         },
         computed: {
-            _seconds: () => 1000,
-            _minutes() {
-                return this._seconds * 60
+            seconds() {
+                return (this.modifiedDate - this.now) % 60
             },
-            _hours() {
-                return this._minutes * 60
+            minutes() {
+                return ((this.modifiedDate - this.now) / 60) % 60
             },
-            _days() {
-                return this._hours * 24
+            hours() {
+                return ((this.modifiedDate - this.now) / 60 / 60) % 24
+            },
+            days() {
+                return ((this.modifiedDate - this.now) / 60 / 60 / 24)
+            },
+            modifiedDate: function () {
+                return Math.trunc(Date.parse(this.date) / 1000)
             }
+        },
+        mounted() {
+            this.timer_loop()
         }
     }
 </script>
@@ -65,7 +65,6 @@
         bottom: 7%;
         left: 50%;
         transform: translate(-50%, 0);
-        // margin: 0;
     }
 
     .time-block-item {
