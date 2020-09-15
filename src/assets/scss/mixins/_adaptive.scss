@@ -1,0 +1,29 @@
+@mixin max-width-1150 {
+    @media screen and (max-width: 1150px) {
+        @content
+    }
+}
+
+@mixin min-width-651 {
+    @media screen and (min-width: 651px) {
+        @content
+    }
+}
+
+@mixin max-width-650 {
+    @media screen and (max-width: 650px) {
+        @content
+    }
+}
+
+@mixin max-width-530 {
+    @media screen and (max-width: 530px) {
+        @content
+    }
+}
+
+@mixin max-width-430 {
+    @media screen and (max-width: 430px) {
+        @content
+    }
+}
