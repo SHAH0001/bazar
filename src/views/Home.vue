@@ -15,24 +15,6 @@
                     <i class="icon-shopping-basket"></i>
                     add to cart
                 </button>
-                <!-- <div class="time-block">
-                    <div class="time-block-item">
-                        <p class="figures">25</p>
-                        <p class="unit-name">Days</p>
-                    </div>
-                    <div class="time-block-item">
-                        <p class="figures">10</p>
-                        <p class="unit-name">Hrs</p>
-                    </div>
-                    <div class="time-block-item">
-                        <p class="figures">45</p>
-                        <p class="unit-name">Mins</p>
-                    </div>
-                    <div class="time-block-item">
-                        <p class="figures">30</p>
-                        <p class="unit-name">Secs</p>
-                    </div>
-                </div> -->
                 <CountdownTimer></CountdownTimer>
             </div>
             <div class="info-about-product">
@@ -61,20 +43,52 @@
             </div>
         </div>
         <div class="main-slider-block-right">
-            
+            <v-Slider
+                :sliderData="sliderItems"
+            ></v-Slider>
+            <!-- <div class="slider-content">
+                <img src="../assets/images/slider_1.jpg" alt="">
+                <div class="slider-info">
+                    <h3 class="slider-info-title">indoor furniture</h3>
+                    <p class="slider-info-description">save up to 50% of all furniture</p>
+                </div>
+                <a class="shop-now" href="#">Shop now</a>
+            </div> -->
         </div>
     </div>
 </template>
 <script>
 import CountdownTimer from '../components/CountdownTimer.vue'
+import vSlider from '../components/Slider/V-slider.vue'
+
     export default {
         data() {
             return {
-                
+                sliderItems: [
+                    {
+                        id: 1, 
+                        image: 'slider_1.jpg',
+                        name: 'indoor furniture', 
+                        description: 'save up to 50% of all furniture'
+                    },
+                    {
+                        id: 2, 
+                        image: 'slider_2.jpg',
+                        name: 'indoor furniture', 
+                        description: 'save up to 50% of all furniture'
+                    },
+                    {
+                        id: 3, 
+                        image: 'slider_3.jpg',
+                        name: 'indoor furniture', 
+                        description: 'save up to 50% of all furniture'
+                    }
+                ],
             }
         },
         components: {
-            CountdownTimer
+            CountdownTimer,
+            vSlider
         }
     }
 </script>
@@ -82,7 +96,8 @@ import CountdownTimer from '../components/CountdownTimer.vue'
     @import '@/assets/scss/style';
     
     .main-slider-block {
-
+        display: flex;
+        justify-content: space-between;
     }
 
     .main-slider-block-left {
