@@ -1,7 +1,10 @@
 <template>
     <div class="v-slider-wrapper">
         <div class="v-slider"
-            :style="{'margin-left': '-' + (100 * currentSlideIndex) + '%'}"
+            :style="{
+                'margin-left': '-' + (100 * currentSlideIndex) + '%', 
+                'width': sliderData.length * 100 + '%'
+            }"
         >
             <vSliderItem
                 v-for="item in sliderData" 
@@ -54,7 +57,7 @@ export default {
 
     .v-slider {
         display: flex;
-        width: 300%;
+        // width: 300%;
         // margin-left: 0;
         transition: all ease .5s;
     }
