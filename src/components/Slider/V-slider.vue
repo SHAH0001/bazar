@@ -1,10 +1,16 @@
 <template>
-    <div class="v-slider">
-        <vSliderItem
-            v-for="item in sliderData" 
-            :key="item.id"
-            :itemData="item"
-        ></vSliderItem>
+    <div class="v-slider-wrapper">
+        <div class="v-slider"
+            :style="{'margin-left': '-' + (100 * currentSlideIndex) + '%'}"
+        >
+            <vSliderItem
+                v-for="item in sliderData" 
+                :key="item.id"
+                :itemData="item"
+            ></vSliderItem>
+        </div>
+        <button @click="prevSlide">Prev</button>
+        <button @click="nextSlide">Next</button>
     </div>    
 </template>
 <script>
@@ -29,6 +35,9 @@ export default {
             }
         },
         nextSlide() {
+            if(this.currentSlideIndex >= this.sliderData.length - 1) {
+                return this.currentSlideIndex = 0
+            }
             this.currentSlideIndex++
         }
     },
@@ -38,5 +47,15 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    .v-slider-wrapper {
+        width: 100%;
+        overflow: hidden;
+    }
 
+    .v-slider {
+        display: flex;
+        width: 300%;
+        // margin-left: 0;
+        transition: all ease .5s;
+    }
 </style>

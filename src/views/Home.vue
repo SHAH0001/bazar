@@ -277,7 +277,7 @@ import vSlider from '../components/Slider/V-slider.vue'
     }
 
     .main-slider-block-right {
-
+        width: 750px;
     }
 
 </style>
