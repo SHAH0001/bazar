@@ -46,14 +46,6 @@
             <v-Slider
                 :sliderData="sliderItems"
             ></v-Slider>
-            <!-- <div class="slider-content">
-                <img src="../assets/images/slider_1.jpg" alt="">
-                <div class="slider-info">
-                    <h3 class="slider-info-title">indoor furniture</h3>
-                    <p class="slider-info-description">save up to 50% of all furniture</p>
-                </div>
-                <a class="shop-now" href="#">Shop now</a>
-            </div> -->
         </div>
     </div>
 </template>
@@ -154,47 +146,10 @@ import vSlider from '../components/Slider/V-slider.vue'
         cursor: pointer;
         background-color: $mainColor;
         padding: 11px 17px 11px 11px;
-        // margin-top: 5px;
     }    
 
-    // .time-block {
-    //     display: flex;
-    //     position: absolute;
-    //     bottom: 7%;
-    //     left: 50%;
-    //     transform: translate(-50%, 0);
-    //     // margin: 0;
-    // }
-
-    // .time-block-item {
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     flex-direction: column;
-    //     width: 71px;
-    //     height: 71px;
-    //     background-color: #3e3e3e;
-    //     border-radius: 50%;
-    //     margin: 0 5px 0 0;
-    // }
-
-    // .figures,
-    // .unit-name {
-    //     color: #fff;
-    //     margin: 0;
-    // }
-
-    // .figures {
-    //     font-size: 24px;
-    // }
-
-    // .unit-name {
-    //     font-size: 13px;
-    //     text-transform: uppercase;
-    // }
-
     .hot-deals-point-active {
-        background-color: #d58e32;
+        background-color: $secondColor;
     }
 
     .info-about-product {
@@ -238,7 +193,7 @@ import vSlider from '../components/Slider/V-slider.vue'
         top: -2px;
         left: 50%;
         transform: translate(-50%, 0);
-        background-color: #d58e32;
+        background-color: $secondColor;
     }
 
     .buttons-and-price-product {
@@ -278,6 +233,7 @@ import vSlider from '../components/Slider/V-slider.vue'
 
     .main-slider-block-right {
         width: 750px;
+        margin: 0 24px 0 0;
     }
 
 </style>

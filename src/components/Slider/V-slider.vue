@@ -12,8 +12,8 @@
                 :itemData="item"
             ></vSliderItem>
         </div>
-        <button @click="prevSlide">Prev</button>
-        <button @click="nextSlide">Next</button>
+        <button class="slider-prev slider-button" @click="prevSlide"><i class="icon-arrow-left"></i></button>
+        <button class="slider-next slider-button" @click="nextSlide"><i class="icon-arrow-right"></i></button>
     </div>    
 </template>
 <script>
@@ -50,6 +50,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    @import '@/assets/scss/style';
+
     .v-slider-wrapper {
         width: 100%;
         overflow: hidden;
@@ -57,8 +59,29 @@ export default {
 
     .v-slider {
         display: flex;
-        // width: 300%;
-        // margin-left: 0;
         transition: all ease .5s;
+        height: 470px;
+    }
+
+    .slider-prev {
+        background-color: $mainColor;
+    }
+
+    .slider-next {
+        background-color: $secondColor;
+    }
+
+    .slider-button {
+        display: inline-block;
+        width: 50%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 10px 0;
+    }
+
+    .slider-button i {
+        font-size: 15px;
+        color: #fff;
     }
 </style>

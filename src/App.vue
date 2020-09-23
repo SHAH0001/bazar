@@ -334,7 +334,7 @@
 
   .phone-block-icon {
     display: inline-block;
-    color: #d58e32;
+    color: $secondColor;
     font-size: 44px;
     margin: 0 0 0 6px;
   }
@@ -367,7 +367,7 @@
     width: 50px;
     height: 50px;
     border-radius: 5px;
-    background-color: #d58e32;
+    background-color: $secondColor;
     text-decoration: none;
     margin: 2% 4% 0 0;
 
@@ -524,7 +524,7 @@
     {
     width: 6px;
     height: 6px;
-    background-color: #d58e32;
+    background-color: $secondColor;
     border-radius: 50%;
   }
 
@@ -551,7 +551,7 @@
   .select-category-icon-lines-items::after {
     width: 17px;
     height: 4px;
-    background-color: #d58e32;
+    background-color: $secondColor;
   }
 
   .select-category-triangle {
@@ -681,7 +681,7 @@
     color: $mainColor;
     text-decoration: none;
     text-transform: uppercase;
-    padding: 30px 17px;
+    padding: 31px 17px;
 
     @include max-width-650 {
       color: #fff;
@@ -691,7 +691,7 @@
 
   .nav-items-link-active {
     position: relative;
-    background-color: #d58e32;
+    background-color: $secondColor;
     color: #fff;
   }
 
