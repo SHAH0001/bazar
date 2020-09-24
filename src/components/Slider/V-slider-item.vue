@@ -19,13 +19,26 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    @import '@/assets/scss/style';
 
     .v-slider-item {
         position: relative;
+
+        @include max-width-1150 {
+            width: 100%;
+        }
     }
 
     .v-slider-item img {
         display: block;
+
+        @include max-width-1150 {
+            width: 100%;
+        }
+
+        @include max-width-750 {
+            height: 100%;
+        }
     }
 
     .v-slider-text {
@@ -37,18 +50,31 @@ export default {
         text-transform: uppercase;
         padding: 6.6% 0;
         background-color: rgba(102, 102, 102, .5);
+
+        @include max-width-430 {
+            top: 15%;
+        }
     }
 
     .v-slider-title {
         font-size: 54px;
         color: #fff;
         margin: 7px 0 0 0;
+
+        @include max-width-550 {
+            font-size: 40px;
+        }
     }
 
     .v-slider-description {
         font-size: 24px;
         color: #fff;
         margin: -15px 0 0 0;
+
+        @include max-width-550 {
+            font-size: 18px;
+            margin: 0;
+        }
     }
 
     .v-shop-now {
@@ -62,6 +88,10 @@ export default {
         background-color: #fff;
         color: #000;
         padding: 15px 24px;
+
+        @include max-width-430 {
+            top: 60%;
+        }
     }
 
 </style>

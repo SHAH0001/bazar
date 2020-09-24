@@ -95,6 +95,10 @@ import vSlider from '../components/Slider/V-slider.vue'
     .main-slider-block-left {
         max-width: 360px;
         margin: 0 0 0 7px;
+
+        @include max-width-1150 {
+            display: none;
+        }
     }
 
     .hot-deals-block {
@@ -234,6 +238,11 @@ import vSlider from '../components/Slider/V-slider.vue'
     .main-slider-block-right {
         width: 750px;
         margin: 0 24px 0 0;
+
+        @include max-width-1150 {
+            width: 100%;
+            margin: 0;
+        }
     }
 
 </style>

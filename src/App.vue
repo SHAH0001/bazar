@@ -637,7 +637,8 @@
 
   .nav {
     @include max-width-650 {
-      position: absolute;
+      position: fixed;
+      overflow: scroll;
       width: 100%;
       height: 100%;
       top: 0;
@@ -669,7 +670,6 @@
       height: 100%;
       flex-direction: column;
       z-index: 5;
-      background-color: #ccc;
       margin: 0;
       justify-content: inherit;
     }
@@ -684,6 +684,7 @@
     padding: 31px 17px;
 
     @include max-width-650 {
+      background-color: #ccc;
       color: #fff;
       width: 100%;
     }

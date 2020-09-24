@@ -55,6 +55,10 @@ export default {
     .v-slider-wrapper {
         width: 100%;
         overflow: hidden;
+
+        @include max-width-1150 {
+            position: relative;
+        }
     }
 
     .v-slider {
@@ -65,10 +69,18 @@ export default {
 
     .slider-prev {
         background-color: $mainColor;
+
+        @include max-width-1150 {
+            left: 0;
+        }
     }
 
     .slider-next {
         background-color: $secondColor;
+
+        @include max-width-1150 {
+            right: 0;
+        }
     }
 
     .slider-button {
@@ -78,6 +90,11 @@ export default {
         outline: none;
         cursor: pointer;
         padding: 10px 0;
+
+        @include max-width-1150 {
+            position: absolute;
+            bottom: 0;
+        }
     }
 
     .slider-button i {
