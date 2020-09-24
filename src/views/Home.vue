@@ -98,6 +98,10 @@ import vSlider from '../components/Slider/V-slider.vue'
     
     #main-wrapper {
         margin: 0 23px 0 7px;
+
+        @include max-width-1150 {
+            margin: 0;
+        }
     }
     
     .main-slider-block {

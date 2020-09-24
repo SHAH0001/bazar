@@ -1,5 +1,6 @@
 <template>
     <div class="discount-block">
+        
         <a href="#" class="discount-block-left">
             <img src="../assets/images/discount_main_image.jpg" alt="">
             <div class="discount-block-left-border"></div>
@@ -9,6 +10,7 @@
                 <p class="discount-block-left-info-discount-amount">-20%</p>
             </div>
         </a>
+
         <div class="discount-block-right">
             <a href="#" class="discount-block-right-link">
                 <img src="../assets/images/discount_1_block.jpg" alt="">
@@ -19,7 +21,6 @@
                     <p class="discount-block-top-info-price">$200.00</p>
                 </div>
             </a>
-
             <a href="#" class="discount-block-right-link">
                 <img src="../assets/images/discount_2_block.jpg" alt="">
                 <div class="discount-block-bottom-backroung"></div>
@@ -29,6 +30,7 @@
                 </div>
             </a>
         </div>
+
     </div>
 </template>
 <script>
@@ -43,17 +45,36 @@ export default {
         display: flex;
         justify-content: space-between;
         margin: 30px 0 0 0;
+
+        @include max-width-760 {
+            flex-wrap: wrap;
+        }
+
+        @include max-width-530 {
+            margin: -15px 0 0 0;
+        }
     }
 
     .discount-block-left {
-        // display: block;
         position: relative;
         text-decoration: none;
         
+        @include max-width-1190 {
+            margin: 0 30px 0 0;
+        }
+
+        @include max-width-760 {
+            width: 100%;
+            margin: 0 0 2% 0;
+        }
     }
 
     .discount-block-left img {
         display: block;
+
+        @include max-width-760 {
+            width: 100%;
+        }
     }
 
     .discount-block-left-border {
@@ -73,17 +94,30 @@ export default {
         color: #fff;
         text-transform: uppercase;
         z-index: 2;
+
+        @include max-width-430 {
+            bottom: 21%;
+        }
     }
 
     .discount-block-left-info-title {
         font-size: 36px;
         margin: 0 0 -27px 0;
+
+        @include max-width-850 {
+            font-size: 31px;
+            margin: 0 0 -13px 0;
+        }
     }
 
     .discount-block-left-info-description {
         font-size: 60px;
         font-weight: bold;
         margin: 0 0 -5px 0;
+
+        @include max-width-850 {
+            font-size: 47px;
+        }
     }
 
     .discount-block-left-info-discount-amount {
@@ -91,12 +125,25 @@ export default {
         border: 5px solid #fff;
         font-weight: bold;
         margin: 0 76px 10px 0;
+
+        @include max-width-850 {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        @include max-width-430 {
+            font-size: 20px;
+        }
     }
 
     .discount-block-right {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        @include max-width-750 {
+            width: 100%;
+        }
     }
 
     .discount-block-right-link {
@@ -106,6 +153,11 @@ export default {
 
     .discount-block-right-link img {
         display: block;
+
+        @include max-width-750 {
+            width: 100%;
+            margin-bottom: 2%;
+        }
     }
 
     .discount-block-top-backroung {
@@ -126,12 +178,26 @@ export default {
         text-transform: uppercase;
         color: #000;
         z-index: 3;
+
+        @include max-width-950 {
+            top: 2%;
+        }
+
+        @include max-width-430 {
+            top: 2%;
+            left: 4%;
+            transform: translate(0);
+        }
     }
 
     .discount-block-top-info-title {
         font-size: 30px;
         font-weight: normal;
         margin: 0;
+
+        @include max-width-950 {
+            font-size: 25px;
+        }
     }
 
     .discount-block-top-info-description {
@@ -144,6 +210,10 @@ export default {
         font-weight: bold;
         margin: 0;
         color: $secondColor;
+
+        @include max-width-850 {
+            font-size: 25px;
+        }
     }
 
     .discount-block-bottom-backroung {
