@@ -1,56 +1,61 @@
 <template>
-    <div class="main-slider-block">
-        <div class="main-slider-block-left">
-            <div class="hot-deals-block">
-                <h3 class="hot-deals-title">Hot Deals</h3>
-                <div class="hot-deals-points">
-                    <span class="hot-deals-point hot-deals-point-active"></span>
-                    <span class="hot-deals-point"></span>
-                    <span class="hot-deals-point"></span>
-                </div>
-            </div>
-            <div class="main-slider-block-left-image">
-                <img src="../assets/images/360x300.jpg" alt="">
-                <button class="add-to-cart">
-                    <i class="icon-shopping-basket"></i>
-                    add to cart
-                </button>
-                <CountdownTimer></CountdownTimer>
-            </div>
-            <div class="info-about-product">
-                <div class="info-about-product-wrapper">
-                    <a href="#" class="info-about-product-title">Aenean Ru Bristique</a>
-                    <div class="star-rating">
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star-o"></i>
-                        <i class="icon-star-o"></i>
-                        <i class="icon-star-o"></i>
-                    </div>
-                    <div class="info-about-line"></div>
-                    <div class="buttons-and-price-product">
-                        <div class="buttons-block">
-                           <div class="product-button"><i class="icon-eye"></i></div>
-                           <div class="product-button"><i class="icon-heart-o"></i></div>
-                           <div class="product-button"><i class="icon-arrows-h"></i></div> 
-                        </div>
-                        <div class="price-block">
-                            <p class="old-price">$350.00</p>
-                            <p class="current-price">$300.00</p>
-                        </div>
+    <div id="main-wrapper">
+        <div class="main-slider-block">
+            <div class="main-slider-block-left">
+                <div class="hot-deals-block">
+                    <h3 class="hot-deals-title">Hot Deals</h3>
+                    <div class="hot-deals-points">
+                        <span class="hot-deals-point hot-deals-point-active"></span>
+                        <span class="hot-deals-point"></span>
+                        <span class="hot-deals-point"></span>
                     </div>
                 </div>
+                <div class="main-slider-block-left-image">
+                    <img src="../assets/images/360x300.jpg" alt="">
+                    <button class="add-to-cart">
+                        <i class="icon-shopping-basket"></i>
+                        add to cart
+                    </button>
+                    <CountdownTimer></CountdownTimer>
+                </div>
+                <div class="info-about-product">
+                    <div class="info-about-product-wrapper">
+                        <a href="#" class="info-about-product-title">Aenean Ru Bristique</a>
+                        <div class="star-rating">
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star-o"></i>
+                            <i class="icon-star-o"></i>
+                            <i class="icon-star-o"></i>
+                        </div>
+                        <div class="info-about-line"></div>
+                        <div class="buttons-and-price-product">
+                            <div class="buttons-block">
+                            <div class="product-button"><i class="icon-eye"></i></div>
+                            <div class="product-button"><i class="icon-heart-o"></i></div>
+                            <div class="product-button"><i class="icon-arrows-h"></i></div> 
+                            </div>
+                            <div class="price-block">
+                                <p class="old-price">$350.00</p>
+                                <p class="current-price">$300.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-slider-block-right">
+                <v-Slider
+                    :sliderData="sliderItems"
+                ></v-Slider>
             </div>
         </div>
-        <div class="main-slider-block-right">
-            <v-Slider
-                :sliderData="sliderItems"
-            ></v-Slider>
-        </div>
+        <Features></Features>
+        <footer style="height: 250px;"></footer>
     </div>
 </template>
 <script>
 import CountdownTimer from '../components/CountdownTimer.vue'
+import Features from '../components/Features.vue'
 import vSlider from '../components/Slider/V-slider.vue'
 
     export default {
@@ -80,12 +85,17 @@ import vSlider from '../components/Slider/V-slider.vue'
         },
         components: {
             CountdownTimer,
-            vSlider
+            vSlider,
+            Features
         }
     }
 </script>
 <style lang="scss" scoped>
     @import '@/assets/scss/style';
+    
+    #main-wrapper {
+        margin: 0 23px 0 7px;
+    }
     
     .main-slider-block {
         display: flex;
@@ -94,7 +104,6 @@ import vSlider from '../components/Slider/V-slider.vue'
 
     .main-slider-block-left {
         max-width: 360px;
-        margin: 0 0 0 7px;
 
         @include max-width-1150 {
             display: none;
@@ -237,7 +246,6 @@ import vSlider from '../components/Slider/V-slider.vue'
 
     .main-slider-block-right {
         width: 750px;
-        margin: 0 24px 0 0;
 
         @include max-width-1150 {
             width: 100%;

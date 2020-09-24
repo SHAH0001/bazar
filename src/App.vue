@@ -672,6 +672,7 @@
       z-index: 5;
       margin: 0;
       justify-content: inherit;
+      background-color: #ccc;
     }
   }
 
