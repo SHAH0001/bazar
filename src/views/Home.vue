@@ -50,12 +50,14 @@
             </div>
         </div>
         <Features></Features>
+        <Discount></Discount>
         <footer style="height: 250px;"></footer>
     </div>
 </template>
 <script>
 import CountdownTimer from '../components/CountdownTimer.vue'
 import Features from '../components/Features.vue'
+import Discount from '../components/Discount.vue'
 import vSlider from '../components/Slider/V-slider.vue'
 
     export default {
@@ -86,7 +88,8 @@ import vSlider from '../components/Slider/V-slider.vue'
         components: {
             CountdownTimer,
             vSlider,
-            Features
+            Features,
+            Discount
         }
     }
 </script>
