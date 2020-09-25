@@ -15,19 +15,70 @@
                 <div class="point"></div>
             </div>
         </div>
-        <div v-else>
+        <div class="sorting-sort-by" v-else-if="whatSortShow === 'sortBy'">
+            
+            <h3 class="sort-by-title">Furniture</h3>
+            
+            <div class="sort-by-block">
+                <span class="sort-by-name">Sort By</span>
+                <select class="sort-by-select">
+                    <option>Price: Lowest first</option>
+                    <option>Price: Hight first</option>
+                </select>
+            </div>
+            
+            <div class="show-block">
+                <span class="sort-by-name">Show</span>
+                <select class="sort-by-select">
+                    <option>12</option>
+                    <option>24</option>
+                    <option>48</option>
+                </select>
+            </div>
+
+            <div class="way-display-block">
+                
+                <div class="grid">
+                    <div class="grid-wrapper">
+                        <div class="grid-top-block">
+                            <div class="grid-block-item"></div>
+                            <div class="grid-block-item"></div>
+                        </div>
+                        <div class="grid-bottom-block">
+                            <div class="grid-block-item"></div>
+                            <div class="grid-block-item"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list">
+                    <div class="list-row">
+                        <div class="list-point"></div>
+                        <div class="list-line"></div>
+                    </div>
+                    <div class="list-row">
+                        <div class="list-point"></div>
+                        <div class="list-line"></div>
+                    </div>
+                    <div class="list-row">
+                        <div class="list-point"></div>
+                        <div class="list-line"></div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </template>
 <script>
-export default {
-    props: {
-        whatSortShow: {
-            type: String,
-            default: 'tabs'
+    export default {
+        props: {
+            whatSortShow: {
+                type: String,
+                default: 'tabs'
+            }
         }
     }
-}
 </script>
 <style lang="scss" scoped>
     @import '@/assets/scss/style';
@@ -102,7 +153,6 @@ export default {
         text-decoration: none;
         margin: 0 12px;
         padding: 0 5px;
-        // border: 1px solid red;
 
         @include max-width-530 {
             margin-bottom: 10px;
@@ -147,10 +197,81 @@ export default {
         background-color: #e2e2e2;
         border-radius: 50%;
         margin-left: 12px;
-    } 
-    
+    }
+
     .point-active {
         background-color: $secondColor;
+    }
+
+    .sorting-sort-by {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sort-by-title {
+        font-size: 22px;
+        color: $mainColor;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    .sort-by-name {
+        font-size: 14px;
+    }
+
+    .sort-by-select {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: normal;
+        color: #939393;
+        border: 1px solid #b7b7b7;
+        outline: none;
+        padding: 7px 49px 7px 10px;
+        margin: 0 0 0 13px;
+    }
+
+    .way-display-block  {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 67px;
+        border: 1px solid #b7b7b7;
+    }
+
+    .grid-top-block,
+    .grid-bottom-block {
+        display: flex;
+    }
+
+    .grid-block-item {
+        width: 8px;
+        height: 8px;
+        background-color: #363636;
+        border-radius: 1px;
+        margin: 1px;
+    }
+
+    .list-row {
+        display: flex;
+        margin-bottom: 1px;
+    }
+
+    .list-point {
+        width: 6px;
+        height: 6px;
+        background-color: #363636;
+        margin-right: 1px;
+    }
+
+    .list-line {
+        width: 15px;
+        height: 6px;
+        background-color: #363636;
+    }
+
+    .grid,
+    .list {
+        cursor: pointer;
     }
 
 </style>
