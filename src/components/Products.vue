@@ -1,10 +1,6 @@
 <template>
     <div id="main-products-block">
-
-        <!-- <div class="selection-options-block">
-            <h3></h3>
-        </div> -->
-
+        <SortingDisplay />
         <div class="products">
 
             <div class="product">
@@ -25,7 +21,6 @@
                 <div class="product-info">
                     <div class="product-info-wrapper">
                         <a href="#" class="product-info-title">Aenean Ru Bristique</a>
-                        <!-- <p class="list-price">$30.00</p> -->
                         <div class="star-rating">
                             <i class="icon-star"></i>
                             <i class="icon-star"></i>
@@ -33,9 +28,6 @@
                             <i class="icon-star-o"></i>
                             <i class="icon-star-o"></i>
                         </div>
-                        <!-- <p class="list-description">
-                            Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready.
-                        </p> -->
                         <div class="product-line"></div>
                         <div class="liked-and-price-block">
                             <div class="buttons-block">
@@ -55,11 +47,19 @@
     </div>
 </template>
 <script>
-import Tab from './Tab'
+import SortingDisplay from './SortingDisplay'
 
 export default {
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+        
+    },
     components: {
-        Tab
+        SortingDisplay
     }
 }
 </script>
@@ -67,11 +67,23 @@ export default {
     @import '@/assets/scss/style';
 
     #main-products-block {
-        margin: 121px 0 0 0;
+        margin: 53px 0 0 0;
+    }
+
+    .selection-options-block {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .selection-options {
+        font-size: 22px;
+        font-weight: bold;
+        color: $mainColor;
+        margin: 0;
     }
 
     .products {
-
+        margin-top: 25px;
     }
 
     .product {

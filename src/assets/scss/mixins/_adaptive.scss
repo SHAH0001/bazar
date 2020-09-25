@@ -10,14 +10,14 @@
     }
 }
 
-@mixin max-width-850 {
-    @media screen and (max-width: 850px) {
+@mixin max-width-950 {
+    @media screen and (max-width: 950px) {
         @content
     }
 }
 
-@mixin max-width-950 {
-    @media screen and (max-width: 950px) {
+@mixin max-width-850 {
+    @media screen and (max-width: 850px) {
         @content
     }
 }
@@ -28,14 +28,14 @@
     }
 }
 
-@mixin min-width-651 {
-    @media screen and (min-width: 651px) {
+@mixin max-width-760 {
+    @media screen and (max-width: 760px) {
         @content
     }
 }
 
-@mixin max-width-760 {
-    @media screen and (max-width: 760px) {
+@mixin min-width-651 {
+    @media screen and (min-width: 651px) {
         @content
     }
 }
