@@ -20,13 +20,14 @@
                 <div class="product-info">
                     <div class="product-info-wrapper">
                         <a href="#" class="product-info-title">{{ product.name }}</a>
-                        <div class="star-rating">
+                        <!-- <div class="star-rating">
                             <i class="icon-star"></i>
                             <i class="icon-star"></i>
                             <i class="icon-star-o"></i>
                             <i class="icon-star-o"></i>
                             <i class="icon-star-o"></i>
-                        </div>
+                        </div> -->
+                        <StarRating :rating="product.rating" :productId="product.id"></StarRating>
                         <div class="product-line"></div>
                         <div class="liked-and-price-block">
                             <div class="buttons-block">
@@ -46,6 +47,8 @@
 </template>
 <script>
 import SortingDisplay from './SortingDisplay'
+import StarRating from './StarRating'
+
 
 export default {
     data() {
@@ -56,7 +59,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_1.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 2,
+                    rating: 1,
                     oldPrice: 30.00,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -76,7 +79,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_3.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 2,
+                    rating: 3,
                     oldPrice: false,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -86,7 +89,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_4.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 2,
+                    rating: 4,
                     oldPrice: false,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -96,7 +99,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_5.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 2,
+                    rating: 4,
                     oldPrice: Math.floor(Math.random() * Math.floor(30)),
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -106,7 +109,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_6.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 2,
+                    rating: 5,
                     oldPrice: 30.00,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -116,7 +119,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_7.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 2,
+                    rating: 1,
                     oldPrice: Math.floor(Math.random() * Math.floor(30)),
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -126,7 +129,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_8.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 2,
+                    rating: 3,
                     oldPrice: 30.00,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -140,7 +143,8 @@ export default {
         }
     },
     components: {
-        SortingDisplay
+        SortingDisplay,
+        StarRating
     }
 }
 </script>
@@ -267,14 +271,6 @@ export default {
         color: $mainColor;
         margin: 14px 0 0 0;
         text-decoration: none;
-    }
-
-    .star-rating {
-        margin: 6px 0 0 0;
-    }
-
-    .star-rating i {
-        margin: 0 1px;
     }
 
     .product-line {

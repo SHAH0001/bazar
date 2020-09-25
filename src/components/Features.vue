@@ -75,10 +75,6 @@ export default {
         transform: translate(-50%, 0);
     }
 
-    .feature-item-link img {
-        
-    }
-
     .feature-item-title {
         font-weight: bold;
         margin: 45px 0 0 0;
