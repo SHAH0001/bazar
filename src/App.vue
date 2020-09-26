@@ -49,9 +49,13 @@
         <div class="container">
           <div class="header-middle-wrapper">
             <div class="phone-block"><i class="icon-mobile-phone phone-block-icon"></i><a href="+23003560222"
-                class="phone">2300 - 3560 - 222 </a></div><a href="#" class="logo"><img src="./../public/logo.png"
-                alt=""></a><a href="#" class="basket-block"><i class="icon-shopping-basket basket-block-icon"></i><span
-                class="basket-count">0</span></a>
+                class="phone">2300 - 3560 - 222 </a></div>
+                  <router-link to="/" tag="a" class="logo">
+                    <img src="./../public/logo.png" alt="">
+                  </router-link>
+                    <a href="#" class="basket-block">
+                      <i class="icon-shopping-basket basket-block-icon"></i>
+                    <span class="basket-count">0</span></a>
           </div>
         </div>
       </div>
@@ -107,7 +111,7 @@
     </header>
     <div class="container">
       <router-view></router-view>
-    </div>  
+    </div>
     <footer class="footer"></footer>
   </div>
 </template>

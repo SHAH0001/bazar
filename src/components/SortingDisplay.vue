@@ -1,20 +1,18 @@
 <template>
     <div>
+
         <div class="sorting-tabs" v-if="whatSortShow === 'tabs'">
             <h3 class="sorting-tabs-title">New furniture</h3>
             <div class="tabs">
-                <a class="tabs-link" href="#">Bed</a>
-                <a class="tabs-link" href="#">Chair</a>
-                <a class="tabs-link" href="#">Sofa</a>
-                <a class="tabs-link" href="#">Table</a>
-                <a class="tabs-link" href="#">Dining</a>
+                <slot name="tabs"></slot>
             </div>
-            <div class="points-block">
+            <div v-if="enabledPoints" class="points-block">
                 <div class="point point-active"></div>
                 <div class="point"></div>
                 <div class="point"></div>
             </div>
         </div>
+
         <div class="sorting-sort-by" v-else-if="whatSortShow === 'sortBy'">
             
             <h3 class="sort-by-title">Furniture</h3>
@@ -68,6 +66,7 @@
 
             </div>
         </div>
+
     </div>
 </template>
 <script>
@@ -76,6 +75,9 @@
             whatSortShow: {
                 type: String,
                 default: 'tabs'
+            },
+            enabledPoints: {
+                default: false
             }
         }
     }

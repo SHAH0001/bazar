@@ -5,23 +5,14 @@
                 v-for="(star, index) in maxStars" 
                 :key="index"
                 :class="star <= rating ? 'icon-star' : 'icon-star-o'"
-                @click="changeRating(star)"
             >
             </i>
-            <!-- <i class="icon-star"></i> -->
-            <!-- <i class="icon-star"></i>
-            <i class="icon-star-o"></i>
-            <i class="icon-star-o"></i>
-            <i class="icon-star-o"></i> -->
         </div>
     </div>
 </template>
 <script>
 export default {
     props: {
-        productId: {
-            type: Number
-        },
         rating: {
             type: Number,
             required: true
@@ -29,12 +20,6 @@ export default {
         maxStars: {
             type: Number,
             default: 5
-        }
-    },
-    methods: {
-        changeRating(star) {
-            console.log(star)
-            console.log(this.productId)
         }
     }
 }

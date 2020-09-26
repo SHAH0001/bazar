@@ -1,8 +1,13 @@
 <template>
     <div id="main-products-block">
-        <SortingDisplay
-            :whatSortShow="'tabs'"
-        >
+        <SortingDisplay :whatSortShow="'tabs'" :enabledPoints="true">
+            <div slot="tabs">
+                <a class="tabs-link" href="#">Bed</a>
+                <a class="tabs-link" href="#">Chair</a>
+                <a class="tabs-link" href="#">Sofa</a>
+                <a class="tabs-link" href="#">Table</a>
+                <a class="tabs-link" href="#">Dining</a>
+            </div>
         </SortingDisplay>
         <div class="products">
             <div v-for="product in products" :key="product.id" class="product">
@@ -19,15 +24,8 @@
                 </div>
                 <div class="product-info">
                     <div class="product-info-wrapper">
-                        <a href="#" class="product-info-title">{{ product.name }}</a>
-                        <!-- <div class="star-rating">
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
-                            <i class="icon-star-o"></i>
-                            <i class="icon-star-o"></i>
-                            <i class="icon-star-o"></i>
-                        </div> -->
-                        <StarRating :rating="product.rating" :productId="product.id"></StarRating>
+                        <router-link to="/product/aenean-ru-bristique" tag="a" class="product-info-title">{{ product.name }}</router-link>
+                        <StarRating :rating="product.rating"></StarRating>
                         <div class="product-line"></div>
                         <div class="liked-and-price-block">
                             <div class="buttons-block">
@@ -43,11 +41,28 @@
                 </div>
             </div>
         </div>
+        <div class="furniture-gallery-block">
+            <div class="furniture-gallery-left">
+                <Tabs>
+                    <Tab name="header" selected="true">
+                        <h3>header789</h3>
+                    </Tab>
+                    <Tab name="paragraf">
+                        <p>paragraf</p>
+                    </Tab>
+                </Tabs>
+            </div>
+            <div class="furniture-gallery-right"></div>
+        </div>
     </div>
 </template>
 <script>
 import SortingDisplay from './SortingDisplay'
 import StarRating from './StarRating'
+import Tab from './Tabs/Tab'
+import Tabs from './Tabs/Tabs'
+
+
 
 
 export default {
@@ -59,7 +74,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_1.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 1,
+                    rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: 30.00,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -69,7 +84,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_2.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 2,
+                    rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: false,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -79,7 +94,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_3.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 3,
+                    rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: false,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -89,7 +104,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_4.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 4,
+                    rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: false,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -99,7 +114,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_5.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 4,
+                    rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: Math.floor(Math.random() * Math.floor(30)),
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -109,7 +124,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_6.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 5,
+                    rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: 30.00,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -119,7 +134,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_7.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 1,
+                    rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: Math.floor(Math.random() * Math.floor(30)),
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -129,7 +144,7 @@ export default {
                     sale: Math.floor(Math.random() * Math.floor(2)),
                     img: 'product_8.jpg',
                     name: 'Aenean Ru Bristique',
-                    rating: 3,
+                    rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: 30.00,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
@@ -144,11 +159,13 @@ export default {
     },
     components: {
         SortingDisplay,
-        StarRating
+        StarRating,
+        Tab,
+        Tabs
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
     @import '@/assets/scss/style';
 
     #main-products-block {
@@ -336,7 +353,18 @@ export default {
         color: #fff;
         background-color: $mainColor;
         padding: 6px 10px;
-        // margin: 0 0 0 5px;
+    }
+
+    .furniture-gallery-block {
+
+    }
+
+    .furniture-gallery-left {
+
+    }
+
+    .furniture-gallery-right {
+
     }
 
 </style>

@@ -9,7 +9,12 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
-  }
+    }, 
+    {
+      path: '/product/:productname',
+      name: 'Product',
+      component: () => import('../views/Product.vue')
+    },
 ]
 
 const router = new VueRouter({
