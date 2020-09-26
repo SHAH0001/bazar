@@ -49,17 +49,27 @@
                 </SortingDisplay>
 
                 <Tabs>
-                    <Tab name="Featured" selected="true">
-                        <h3>Featured</h3>
+                    <Tab name="Featured">
+                        <h3>Some information about Featured</h3>
                     </Tab>
-                    <Tab name="Top seller">
-                        <h3>Top seller</h3>
+                    <Tab name="Top seller" selected="true">
+                        <div class="top-seller-img">
+                            <img :src="getImage(products[topSellerShowImage].img)" alt="">
+                        </div>
+                        <div class="top-seller-gallery">
+                            <img 
+                                v-for="(item, index) in products" 
+                                :key="index" 
+                                @click="topSellerChangePicture(item.id)" 
+                                :src="getImage(item.img)" 
+                            alt="">
+                        </div>
                     </Tab>
                     <Tab name="Sale off">
-                        <h3>Sale off</h3>
+                        <h3>Some information about sale off</h3>
                     </Tab>
                     <Tab name="Top rated">
-                        <h3>Top rated</h3>
+                        <h3>Some information about top rated</h3>
                     </Tab>
                 </Tabs>
 
@@ -84,7 +94,7 @@ export default {
                 {
                     id: 1,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_1.jpg',
+                    img: '1',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: 30.00,
@@ -94,7 +104,7 @@ export default {
                 {
                     id: 2,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_2.jpg',
+                    img: '2',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: false,
@@ -104,7 +114,7 @@ export default {
                 {
                     id: 3,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_3.jpg',
+                    img: '3',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: false,
@@ -114,7 +124,7 @@ export default {
                 {
                     id: 4,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_4.jpg',
+                    img: '4',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: false,
@@ -124,7 +134,7 @@ export default {
                 {
                     id: 5,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_5.jpg',
+                    img: '5',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: Math.floor(Math.random() * Math.floor(30)),
@@ -134,7 +144,7 @@ export default {
                 {
                     id: 6,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_6.jpg',
+                    img: '6',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: 30.00,
@@ -144,7 +154,7 @@ export default {
                  {
                     id: 7,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_7.jpg',
+                    img: '7',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: Math.floor(Math.random() * Math.floor(30)),
@@ -154,19 +164,23 @@ export default {
                 {
                     id: 8,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_8.jpg',
+                    img: '8',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: 30.00,
                     newPrice: Math.floor(Math.random() * Math.floor(50)),
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
                 }
-            ]
+            ],
+            topSellerShowImage: 0
         }
     },
     methods: {
         getImage(path) {
-            return require('../assets/images/' + path);
+            return require('../assets/images/product_' + path + '.jpg');
+        },
+        topSellerChangePicture(imageId) {
+            this.topSellerShowImage = imageId
         }
     },
     components: {
@@ -416,16 +430,23 @@ export default {
         position: relative;
         background-color: #f4f5f7;
         color: $secondColor;
+        border-bottom: none;
     }
 
     .tabs-is-active::before {
         content: '';
         position: absolute;
-        top: 0;
+        top: -1px;
         left: 0;
         width: 100%;
         height: 3px;
         background-color: $secondColor;
+    }
+
+    .top-seller-img img {
+        display: block;
+        width: 100%;
+        height: 400px;
     }
 
     .furniture-gallery-right {
