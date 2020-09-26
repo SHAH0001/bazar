@@ -1,6 +1,6 @@
 <template>
     <div id="main-products-block">
-        <SortingDisplay :whatSortShow="'tabs'" :enabledPoints="true">
+        <SortingDisplay :whatSortShow="'tabs'" :enabledPoints="true" :title="'New furniture'">
             <div slot="tabs">
                 <a class="tabs-link" href="#">Bed</a>
                 <a class="tabs-link" href="#">Chair</a>
@@ -43,14 +43,26 @@
         </div>
         <div class="furniture-gallery-block">
             <div class="furniture-gallery-left">
+                <SortingDisplay 
+                    :title="'Furniture gallery'"
+                >
+                </SortingDisplay>
+
                 <Tabs>
-                    <Tab name="header" selected="true">
-                        <h3>header789</h3>
+                    <Tab name="Featured" selected="true">
+                        <h3>Featured</h3>
                     </Tab>
-                    <Tab name="paragraf">
-                        <p>paragraf</p>
+                    <Tab name="Top seller">
+                        <h3>Top seller</h3>
+                    </Tab>
+                    <Tab name="Sale off">
+                        <h3>Sale off</h3>
+                    </Tab>
+                    <Tab name="Top rated">
+                        <h3>Top rated</h3>
                     </Tab>
                 </Tabs>
+
             </div>
             <div class="furniture-gallery-right"></div>
         </div>
@@ -189,6 +201,7 @@ export default {
         justify-content: space-between;
         flex-wrap: wrap;
         margin-top: 25px;
+        margin-bottom: 8px;
 
         @include max-width-1150 {
             justify-content: space-around;
@@ -356,15 +369,67 @@ export default {
     }
 
     .furniture-gallery-block {
-
+        display: flex;
+        justify-content: space-between;
     }
 
     .furniture-gallery-left {
+        width: 48.6%;
+    }
+
+    .tabs {
+        margin: 31px 0 0 0;
+    }
+
+    .tabs-items {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .tabs-item {
+        font-size: 18px;
+        font-weight: bold;
+        width: 25%;
+        text-align: center;
+        border: 1px solid #e2e2e2;
+        border-left: none;
+        text-transform: uppercase;
+        padding: 8px 0;
+        cursor: pointer;
+    }
+
+    .tabs .tabs-item:first-child {
+        border-left: 1px solid #e2e2e2;
+    }
+
+    .tabs-nav-item {
 
     }
 
-    .furniture-gallery-right {
+    .tabs-details {
 
+    }
+
+    .tabs-is-active {
+        position: relative;
+        background-color: #f4f5f7;
+        color: $secondColor;
+    }
+
+    .tabs-is-active::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $secondColor;
+    }
+
+    .furniture-gallery-right {
+        width: 48.6%;
     }
 
 </style>

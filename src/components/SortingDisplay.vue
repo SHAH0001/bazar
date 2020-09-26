@@ -2,7 +2,7 @@
     <div>
 
         <div class="sorting-tabs" v-if="whatSortShow === 'tabs'">
-            <h3 class="sorting-tabs-title">New furniture</h3>
+            <h3 class="sorting-tabs-title">{{title}}</h3>
             <div class="tabs">
                 <slot name="tabs"></slot>
             </div>
@@ -78,6 +78,9 @@
             },
             enabledPoints: {
                 default: false
+            },
+            title: {
+                type: String
             }
         }
     }

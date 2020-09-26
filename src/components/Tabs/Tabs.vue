@@ -1,11 +1,14 @@
 <template>
     <div>
         <div class="tabs">
-            <ul>
-                <li v-for="(tab, index) in tabs" :key="index">
+            <ul class="tabs-items">
+                <li 
+                    class="tabs-item" 
+                    v-for="(tab, index) in tabs" 
+                    :key="index"
+                    :class="{ 'tabs-is-active': tab.isActive }"
+                >
                     <div 
-                        class="tabs-nav-item" 
-                        :class="{ 'is-active': tab.isActive }"
                         @click="selectTab(tab)"
                     >
                         {{ tab.name }}
