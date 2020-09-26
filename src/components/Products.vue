@@ -54,15 +54,26 @@
                     </Tab>
                     <Tab name="Top seller" selected="true">
                         <div class="top-seller-img">
-                            <img :src="getImage(products[topSellerShowImage].img)" alt="">
+                            <img 
+                                :src="topSellerShowImage" 
+                                alt="" 
+                            />
                         </div>
                         <div class="top-seller-gallery">
+                            <button class="top-seller-button" type="button">
+                                <i class="icon-arrow-left"></i>
+                            </button>
                             <img 
                                 v-for="(item, index) in products" 
-                                :key="index" 
-                                @click="topSellerChangePicture(item.id)" 
+                                :key="index"
                                 :src="getImage(item.img)" 
-                            alt="">
+                                @click="topSellerChange(item.img)"
+                                class="top-seller-gallery-item"
+                                alt=""
+                            />
+                            <button class="top-seller-button" type="button">
+                                <i class="icon-arrow-right"></i>
+                            </button>
                         </div>
                     </Tab>
                     <Tab name="Sale off">
@@ -84,9 +95,6 @@ import StarRating from './StarRating'
 import Tab from './Tabs/Tab'
 import Tabs from './Tabs/Tabs'
 
-
-
-
 export default {
     data() {
         return {
@@ -94,7 +102,7 @@ export default {
                 {
                     id: 1,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: '1',
+                    img: 'product_1.jpg',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: 30.00,
@@ -104,7 +112,7 @@ export default {
                 {
                     id: 2,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: '2',
+                    img: 'product_2.jpg',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: false,
@@ -114,7 +122,7 @@ export default {
                 {
                     id: 3,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: '3',
+                    img: 'product_3.jpg',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: false,
@@ -124,7 +132,7 @@ export default {
                 {
                     id: 4,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: '4',
+                    img: 'product_4.jpg',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: false,
@@ -134,7 +142,7 @@ export default {
                 {
                     id: 5,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: '5',
+                    img: 'product_5.jpg',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: Math.floor(Math.random() * Math.floor(30)),
@@ -144,7 +152,7 @@ export default {
                 {
                     id: 6,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: '6',
+                    img: 'product_6.jpg',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: 30.00,
@@ -154,7 +162,7 @@ export default {
                  {
                     id: 7,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: '7',
+                    img: 'product_7.jpg',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: Math.floor(Math.random() * Math.floor(30)),
@@ -164,7 +172,7 @@ export default {
                 {
                     id: 8,
                     sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: '8',
+                    img: 'product_8.jpg',
                     name: 'Aenean Ru Bristique',
                     rating: Math.floor(Math.random() * Math.floor(6)),
                     oldPrice: 30.00,
@@ -172,16 +180,24 @@ export default {
                     description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
                 }
             ],
-            topSellerShowImage: 0
+            topSellerStartImage: false
         }
     },
     methods: {
         getImage(path) {
-            return require('../assets/images/product_' + path + '.jpg');
+            return require('../assets/images/' + path);
         },
-        topSellerChangePicture(imageId) {
-            this.topSellerShowImage = imageId
+        topSellerChange(image) {
+            return this.topSellerStartImage = image
         }
+    },
+    computed: {
+        topSellerShowImage() {
+            if(!this.topSellerStartImage) {
+                return this.getImage(this.products[0].img)
+            }
+            return require('../assets/images/' + this.topSellerStartImage);
+        },
     },
     components: {
         SortingDisplay,
@@ -443,10 +459,38 @@ export default {
         background-color: $secondColor;
     }
 
+    .top-seller-img {
+        border: 1px solid #e2e2e2;
+        border-top: none;
+    }
+
     .top-seller-img img {
         display: block;
         width: 100%;
         height: 400px;
+    }
+
+    .top-seller-gallery {
+        display: flex;
+    }
+
+    .top-seller-gallery-item {
+        display: block;
+        width: 70px;
+        height: 70px;
+        margin: 0 7px;
+    }
+
+    .top-seller-button {
+        display: inline-block;
+        width: 33px;
+        height: 70px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background-color: $mainColor;
+        margin: 0 7px;
+        color: #fff;
     }
 
     .furniture-gallery-right {
