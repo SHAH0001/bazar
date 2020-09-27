@@ -437,11 +437,17 @@ export default {
         border-top: none;
     }
 
+    .gallery-main-image-block img {
+        display: block;
+        width: 100%;
+        height: 408px;
+    }
+
     .gallery-more-about-product {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 21.3%;
+        top: 29%;
         left: 7px;
     }
 
@@ -550,12 +556,6 @@ export default {
 
     .gallery-more-about-product-button-shopping-basket {
         
-    }
-
-    .gallery-main-image {
-        display: block;
-        width: 100%;
-        height: 408px;
     }
 
     .gallery-content {

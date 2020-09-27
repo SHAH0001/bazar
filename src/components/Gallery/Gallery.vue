@@ -1,11 +1,7 @@
 <template>
     <div>
         <div class="gallery-main-image-block">
-            <img 
-                class="gallery-main-image"
-                :src="galleryShowMainImage" 
-                alt="" 
-            />
+            <img :src="galleryShowMainImage" alt="" />
             <div>
                 <div class="gallery-more-about-product">
                     <div class="gallery-button-wrapper">
