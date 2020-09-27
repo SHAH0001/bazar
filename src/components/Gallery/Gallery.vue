@@ -6,6 +6,46 @@
                 :src="galleryShowMainImage" 
                 alt="" 
             />
+            <div class="gallery-more-about-product">
+                <button 
+                    type="button"
+                    class="gallery-more-about-product-button"
+                >
+                    <i class="icon-heart-o"></i>
+                </button>
+                <button 
+                    type="button"
+                    class="gallery-more-about-product-button"
+                >
+                    <i class="icon-arrows-h"></i>
+                </button>
+                <button 
+                    type="button"
+                    class="gallery-more-about-product-button"
+                >
+                    <i class="icon-eye"></i>
+                </button>
+                <button 
+                    type="button"
+                    class="gallery-more-about-product-button"
+                >
+                    <i class="icon-shopping-basket"></i>
+                </button>
+            </div>
+            <!-- <div class="gallery-product-info"> -->
+                <div class="gallery-price-block">
+                    <h3 class="gallery-new-price">$120.00</h3>
+                    <p class="gallery-old-price">$160.00</p>
+                </div>
+                <div class="gallery-title-and-rating">
+                    <router-link 
+                        to="/product/aenean-ru-bristique" class="gallery-title-product"
+                    >
+                        Aenean Ru Bristique
+                    </router-link>
+                    <StarRating :rating="2"></StarRating>
+                </div>
+            <!-- </div> -->
         </div>
         <div class="gallery-content">
 
@@ -37,6 +77,7 @@
     </div>
 </template>
 <script>
+import StarRating from '../StarRating'
 import mixins from '../../mixins/mixins'
 
 export default {
@@ -100,6 +141,9 @@ export default {
             }
             return this.getImage(this.startShowImage)
         },
+    },
+    components: {
+        StarRating
     },
     mounted() {
         const widthAllPictures = this.pictureWidth * this.images.length
