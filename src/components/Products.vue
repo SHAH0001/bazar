@@ -53,28 +53,45 @@
                         <h3>Some information about Featured</h3>
                     </Tab>
                     <Tab name="Top seller" selected="true">
-                        <div class="top-seller-img">
+
+                        <!-- <div class="top-seller-img">
                             <img 
                                 :src="topSellerShowImage" 
                                 alt="" 
                             />
                         </div>
                         <div class="top-seller-gallery">
-                            <button class="top-seller-button" type="button">
+                            
+                            <button 
+                                @click="galleryLeft()"
+                                class="top-seller-button top-seller-button-left" 
+                                type="button"
+                            >
                                 <i class="icon-arrow-left"></i>
                             </button>
-                            <img 
-                                v-for="(item, index) in products" 
-                                :key="index"
-                                :src="getImage(item.img)" 
-                                @click="topSellerChange(item.img)"
-                                class="top-seller-gallery-item"
-                                alt=""
-                            />
-                            <button class="top-seller-button" type="button">
+
+                            <div class="top-seller-miniatures">
+                                <div class="miniatures">
+                                    <img 
+                                        v-for="(item, index) in products" 
+                                        :key="index"
+                                        :src="getImage(item.img)" 
+                                        @click="topSellerChange(item.img)"
+                                        class="top-seller-gallery-item"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+
+                            <button 
+                                @click="galleryRight()"
+                                class="top-seller-button top-seller-button-right" 
+                                type="button"
+                            >
                                 <i class="icon-arrow-right"></i>
                             </button>
-                        </div>
+                        </div> -->
+
                     </Tab>
                     <Tab name="Sale off">
                         <h3>Some information about sale off</h3>
@@ -85,7 +102,7 @@
                 </Tabs>
 
             </div>
-            <div class="furniture-gallery-right"></div>
+            <!-- <div class="furniture-gallery-right"></div> -->
         </div>
     </div>
 </template>
@@ -94,6 +111,8 @@ import SortingDisplay from './SortingDisplay'
 import StarRating from './StarRating'
 import Tab from './Tabs/Tab'
 import Tabs from './Tabs/Tabs'
+import Gallery from './Gallery/Gallery'
+import mixins from '../mixins/mixins'
 
 export default {
     data() {
@@ -183,13 +202,8 @@ export default {
             topSellerStartImage: false
         }
     },
+    mixins: [mixins],
     methods: {
-        getImage(path) {
-            return require('../assets/images/' + path);
-        },
-        topSellerChange(image) {
-            return this.topSellerStartImage = image
-        }
     },
     computed: {
         topSellerShowImage() {
@@ -405,6 +419,7 @@ export default {
 
     .furniture-gallery-left {
         width: 48.6%;
+        border: 1px solid green;
     }
 
     .tabs {
@@ -467,11 +482,16 @@ export default {
     .top-seller-img img {
         display: block;
         width: 100%;
-        height: 400px;
+        height: 408px;
     }
 
     .top-seller-gallery {
         display: flex;
+        position: relative;
+        padding: 8px 0;
+        border: 1px solid #e2e2e2;
+        border-top: none;
+        // overflow: hidden;
     }
 
     .top-seller-gallery-item {
@@ -481,16 +501,43 @@ export default {
         margin: 0 7px;
     }
 
+    .top-seller-miniatures {
+        // display: flex;
+        width: 85%;
+        margin: 0 auto;
+        overflow: hidden;
+        border: 1px solid red;
+    }
+
+    .miniatures {
+        display: flex;
+        margin-left: 0;
+    }
+
+    .top-seller-miniatures img {
+        display: block;
+    }
+
     .top-seller-button {
         display: inline-block;
+        position: absolute;
+        top: 8px;
         width: 33px;
         height: 70px;
         border: none;
         outline: none;
         cursor: pointer;
         background-color: $mainColor;
-        margin: 0 7px;
+        // margin: 0 7px;
         color: #fff;
+    }
+
+    .top-seller-button-left {
+        left: 9px;
+    }
+
+    .top-seller-button-right {
+        right: 9px;
     }
 
     .furniture-gallery-right {
