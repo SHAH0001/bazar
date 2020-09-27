@@ -441,8 +441,12 @@ export default {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 29%;
+        top: 21.3%;
         left: 7px;
+    }
+
+    .gallery-more-about-product-button:hover + .gallery-button-hover-info{
+        display: inline-block;
     }
 
     .gallery-product-info {
@@ -530,6 +534,22 @@ export default {
         cursor: pointer;
         background-color: rgba(244, 245, 247, .5);
         margin-bottom: 8px;
+    }
+
+    .gallery-more-about-product-button-heart {
+
+    }
+
+    .gallery-more-about-product-button-arrows {
+
+    }
+
+    .gallery-more-about-product-button-eye {
+
+    }
+
+    .gallery-more-about-product-button-shopping-basket {
+        
     }
 
     .gallery-main-image {
