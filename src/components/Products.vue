@@ -53,45 +53,10 @@
                         <h3>Some information about Featured</h3>
                     </Tab>
                     <Tab name="Top seller" selected="true">
-
-                        <!-- <div class="top-seller-img">
-                            <img 
-                                :src="topSellerShowImage" 
-                                alt="" 
-                            />
-                        </div>
-                        <div class="top-seller-gallery">
-                            
-                            <button 
-                                @click="galleryLeft()"
-                                class="top-seller-button top-seller-button-left" 
-                                type="button"
-                            >
-                                <i class="icon-arrow-left"></i>
-                            </button>
-
-                            <div class="top-seller-miniatures">
-                                <div class="miniatures">
-                                    <img 
-                                        v-for="(item, index) in products" 
-                                        :key="index"
-                                        :src="getImage(item.img)" 
-                                        @click="topSellerChange(item.img)"
-                                        class="top-seller-gallery-item"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-
-                            <button 
-                                @click="galleryRight()"
-                                class="top-seller-button top-seller-button-right" 
-                                type="button"
-                            >
-                                <i class="icon-arrow-right"></i>
-                            </button>
-                        </div> -->
-
+                        <Gallery
+                            :images="products"
+                        >
+                        </Gallery>
                     </Tab>
                     <Tab name="Sale off">
                         <h3>Some information about sale off</h3>
@@ -205,19 +170,20 @@ export default {
     mixins: [mixins],
     methods: {
     },
-    computed: {
-        topSellerShowImage() {
-            if(!this.topSellerStartImage) {
-                return this.getImage(this.products[0].img)
-            }
-            return require('../assets/images/' + this.topSellerStartImage);
-        },
-    },
+    // computed: {
+    //     topSellerShowImage() {
+    //         if(!this.topSellerStartImage) {
+    //             return this.getImage(this.products[0].img)
+    //         }
+    //         return require('../assets/images/' + this.topSellerStartImage);
+    //     },
+    // },
     components: {
         SortingDisplay,
         StarRating,
         Tab,
-        Tabs
+        Tabs,
+        Gallery
     }
 }
 </script>

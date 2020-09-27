@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="top-seller-img">
-            <img :src="topSellerShowImage" alt="" />
+            <img :src="galleryShowMainImage" alt="" />
         </div>
         <div class="top-seller-gallery">
 
@@ -48,6 +48,15 @@ export default {
         galleryChangeImage(image) {
             return this.startShowImage = image
         }
-    }
+    },
+    computed: {
+        galleryShowMainImage() {
+            if(!this.startShowImage) {
+                return this.getImage(this.images[0].img)
+            }
+            return this.getImage(this.startShowImage)
+            // return require('../assets/images/' + this.startShowImage);
+        },
+    },
 }
 </script>
