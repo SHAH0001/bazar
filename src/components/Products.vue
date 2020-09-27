@@ -41,42 +41,14 @@
                 </div>
             </div>
         </div>
-        <div class="furniture-gallery-block">
-            <div class="furniture-gallery-left">
-                <SortingDisplay 
-                    :title="'Furniture gallery'"
-                >
-                </SortingDisplay>
-
-                <Tabs>
-                    <Tab name="Featured">
-                        <h3>Some information about Featured</h3>
-                    </Tab>
-                    <Tab name="Top seller" selected="true">
-                        <Gallery
-                            :images="products"
-                        >
-                        </Gallery>
-                    </Tab>
-                    <Tab name="Sale off">
-                        <h3>Some information about sale off</h3>
-                    </Tab>
-                    <Tab name="Top rated">
-                        <h3>Some information about top rated</h3>
-                    </Tab>
-                </Tabs>
-
-            </div>
-            <!-- <div class="furniture-gallery-right"></div> -->
-        </div>
     </div>
 </template>
 <script>
 import SortingDisplay from './SortingDisplay'
 import StarRating from './StarRating'
-import Tab from './Tabs/Tab'
-import Tabs from './Tabs/Tabs'
-import Gallery from './Gallery/Gallery'
+// import Tab from './Tabs/Tab'
+// import Tabs from './Tabs/Tabs'
+// import Gallery from './Gallery/Gallery'
 import mixins from '../mixins/mixins'
 
 export default {
@@ -173,9 +145,9 @@ export default {
     components: {
         SortingDisplay,
         StarRating,
-        Tab,
-        Tabs,
-        Gallery
+        // Tab,
+        // Tabs,
+        // Gallery
     }
 }
 </script>
@@ -368,250 +340,6 @@ export default {
         color: #fff;
         background-color: $mainColor;
         padding: 6px 10px;
-    }
-
-    .furniture-gallery-block {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .furniture-gallery-left {
-        width: 48.6%;
-    }
-
-    .tabs {
-        margin: 31px 0 0 0;
-    }
-
-    .tabs-items {
-        display: flex;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    .tabs-item {
-        font-size: 18px;
-        font-weight: bold;
-        width: 25%;
-        text-align: center;
-        border: 1px solid #e2e2e2;
-        border-left: none;
-        text-transform: uppercase;
-        padding: 8px 0;
-        cursor: pointer;
-    }
-
-    .tabs .tabs-item:first-child {
-        border-left: 1px solid #e2e2e2;
-    }
-
-    .tabs-nav-item {
-
-    }
-
-    .tabs-details {
-
-    }
-
-    .tabs-is-active {
-        position: relative;
-        background-color: #f4f5f7;
-        color: $secondColor;
-        border-bottom: none;
-    }
-
-    .tabs-is-active::before {
-        content: '';
-        position: absolute;
-        top: -1px;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background-color: $secondColor;
-    }
-
-    .gallery-main-image-block {
-        position: relative;
-        border: 1px solid #e2e2e2;
-        border-top: none;
-    }
-
-    .gallery-main-image-block img {
-        display: block;
-        width: 100%;
-        height: 408px;
-    }
-
-    .gallery-more-about-product {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 29%;
-        left: 7px;
-    }
-
-    .gallery-more-about-product-button:hover + .gallery-button-hover-info{
-        display: inline-block;
-    }
-
-    .gallery-product-info {
-        // position: absolute;
-        // right: 0;
-        // bottom: 0;
-    }
-
-    .gallery-price-block {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        position: absolute;
-        bottom: 122px;
-        right: 72px;
-        width: 105px;
-        height: 105px;
-        border-radius: 50%;
-        background-color: rgba(123, 123, 124, .5);
-        color: #fff;
-        z-index: 2;
-    }
-
-    .gallery-new-price {
-        font-size: 20px;
-        margin: 10px 0 0 0;
-    }
-
-    .gallery-old-price {
-        font-size: 16px;
-        margin: 0;
-        text-decoration: line-through;
-    }
-
-    .gallery-title-and-rating {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        bottom: 31px;
-        right: 0;
-        background-color: #fff;
-        padding: 25px 43px;
-    }
-
-    .gallery-title-and-rating::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 29px 29px 0 0;
-        border-color: $mainColor transparent transparent transparent;
-    }
-
-    .gallery-title-and-rating::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 0 29px 29px;
-        border-color: transparent transparent $mainColor transparent;
-    }
-
-    .gallery-title-product {
-        font-size: 16px;
-        text-decoration: none;
-        color: $mainColor;
-        margin: 0;
-    }
-
-    .gallery-more-about-product-button {
-        display: block;
-        width: 37px;
-        height: 37px;
-        border: 1px solid $mainColor;
-        outline: none;
-        cursor: pointer;
-        background-color: rgba(244, 245, 247, .5);
-        margin-bottom: 8px;
-    }
-
-    .gallery-more-about-product-button-heart {
-
-    }
-
-    .gallery-more-about-product-button-arrows {
-
-    }
-
-    .gallery-more-about-product-button-eye {
-
-    }
-
-    .gallery-more-about-product-button-shopping-basket {
-        
-    }
-
-    .gallery-content {
-        display: flex;
-        position: relative;
-        padding: 8px 0;
-        border: 1px solid #e2e2e2;
-        border-top: none;
-        // overflow: hidden;
-    }
-
-    .top-seller-gallery-item {
-        display: block;
-        width: 70px;
-        height: 70px;
-        margin: 0 7px;
-    }
-
-    .gallery-miniatures-block {
-        width: 85%;
-        margin: 0 auto;
-        overflow: hidden;
-    }
-
-    .gallery-miniatures {
-        display: flex;
-        transition: all ease .5s;
-    }
-
-    .top-seller-miniatures img {
-        display: block;
-    }
-
-    .gallery-button {
-        display: inline-block;
-        position: absolute;
-        top: 8px;
-        width: 33px;
-        height: 70px;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        background-color: $mainColor;
-        color: #fff;
-    }
-
-    .gallery-button-left {
-        left: 9px;
-    }
-
-    .gallery-button-right {
-        right: 9px;
-    }
-
-    .furniture-gallery-right {
-        width: 48.6%;
     }
 
 </style>
