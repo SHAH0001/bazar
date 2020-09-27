@@ -440,18 +440,18 @@ export default {
         background-color: $secondColor;
     }
 
-    .top-seller-img {
+    .gallery-main-image-block {
         border: 1px solid #e2e2e2;
         border-top: none;
     }
 
-    .top-seller-img img {
+    .gallery-main-image {
         display: block;
         width: 100%;
         height: 408px;
     }
 
-    .top-seller-gallery {
+    .gallery-content {
         display: flex;
         position: relative;
         padding: 8px 0;
@@ -467,7 +467,7 @@ export default {
         margin: 0 7px;
     }
 
-    .top-seller-miniatures {
+    .gallery-miniatures-block {
         // display: flex;
         width: 85%;
         margin: 0 auto;
@@ -475,16 +475,17 @@ export default {
         border: 1px solid red;
     }
 
-    .miniatures {
+    .gallery-miniatures {
         display: flex;
-        margin-left: 0;
+        // margin-left: 0;
+        transition: all ease .5s;
     }
 
     .top-seller-miniatures img {
         display: block;
     }
 
-    .top-seller-button {
+    .gallery-button {
         display: inline-block;
         position: absolute;
         top: 8px;
@@ -498,11 +499,11 @@ export default {
         color: #fff;
     }
 
-    .top-seller-button-left {
+    .gallery-button-left {
         left: 9px;
     }
 
-    .top-seller-button-right {
+    .gallery-button-right {
         right: 9px;
     }
 
