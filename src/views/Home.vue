@@ -80,7 +80,33 @@
 
             </div>
 
-            <div class="furniture-gallery-right"></div>
+            <div class="furniture-gallery-right">
+                <img :src="getImage('bedroom-bed.jpg')" alt="">
+                <div class="furniture-gallery-right-info">
+                    <span 
+                        class="furniture-gallery-right-info-from"
+                    >
+                        From
+                    </span>
+                    <span 
+                        class="furniture-gallery-right-info-price"
+                    >
+                        $50.80
+                    </span>
+                    <h3 
+                        class="furniture-gallery-right-title"
+                    >
+                        Bedroom Bed
+                    </h3>
+                    <router-link 
+                        class="furniture-gallery-right-shop-now" 
+                        to="/" 
+                        tag="a"
+                    >
+                        Shop now
+                    </router-link>
+                </div>
+            </div>
             
         </div>
         <footer style="height: 250px;"></footer>
@@ -620,7 +646,49 @@ import mixins from '../mixins/mixins'
     }
 
     .furniture-gallery-right {
+        position: relative;
         width: 48.6%;
+        // border: 1px solid red;
+    }
+
+    .furniture-gallery-right img {
+        display: block;
+        margin: 10px 0 0 0;
+    }
+
+    .furniture-gallery-right-info {
+        position: absolute;
+        top: 63px;
+        left: 58px;
+    }
+
+    .furniture-gallery-right-info-from {
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .furniture-gallery-right-info-price {
+        font-size: 48px;
+        font-weight: bold;
+        color: #79ae30;
+    }
+
+    .furniture-gallery-right-title {
+        font-size: 48px;
+        color: $secondColor;
+        margin: -7px 0 29px 0;
+    }
+
+    .furniture-gallery-right-shop-now {
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #fff;
+        background-color: #79ae30;
+        padding: 17px 30px;
+        border-radius: 5px;
     }
 
 </style>

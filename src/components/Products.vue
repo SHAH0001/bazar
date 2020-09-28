@@ -250,50 +250,6 @@ export default {
         padding: 0 5px 0 0;
     }
 
-    // .additional-options {
-    //     display: none;
-    //     justify-content: space-around;
-    //     position: absolute;
-    //     bottom: 0;
-    //     left: 50%;
-    //     transform: translate(-50%, 0);
-    //     width: 100%;
-    // }
-
-    // .add-to-cart {
-    //     position: absolute;
-    //     font-size: 13px;
-    //     text-transform: uppercase;
-    //     color: #fff;
-    //     top: 32%;
-    //     left: 50%;
-    //     transform: translate(-50%, 0);
-    //     border: none;
-    //     outline: none;
-    //     cursor: pointer;
-    //     background-color: $mainColor;
-    //     padding: 11px 17px 11px 11px;
-    // }   
-
-    // .product:hover .additional-options {
-    //     display: flex;
-    // }
-
-    // .additional-options-button {
-    //     font-size: 13px;
-    //     border: none;
-    //     outline: none;
-    //     cursor: pointer;
-    //     color: #fff;
-    //     background-color: $mainColor;
-    //     padding: 12px;
-    // }
-
-    // .add-to-cart {
-    //     font-weight: bold;
-    //     text-transform: uppercase;
-    // }
-
     .product-info {
         text-align: center;
         border: 1px solid #e2e2e2;
