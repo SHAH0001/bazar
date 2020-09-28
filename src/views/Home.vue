@@ -415,10 +415,19 @@ import mixins from '../mixins/mixins'
     .furniture-gallery-block {
         display: flex;
         justify-content: space-between;
+
+        @include max-width-850 {
+            flex-wrap: wrap;
+        }
     }
 
     .furniture-gallery-left {
         width: 48.6%;
+
+        @include max-width-850 {
+            width: 100%;
+            margin-bottom: 5%;
+        }
     }
 
     .tabs {
@@ -430,6 +439,10 @@ import mixins from '../mixins/mixins'
         margin: 0;
         padding: 0;
         list-style: none;
+
+        @include max-width-430 {
+            flex-direction: column;
+        }
     }
 
     .tabs-item {
@@ -442,10 +455,20 @@ import mixins from '../mixins/mixins'
         text-transform: uppercase;
         padding: 8px 0;
         cursor: pointer;
+
+        @include max-width-430 {
+            width: 100%;
+            border-bottom: none;
+            border-left: 1px solid #e2e2e2;
+        }
     }
 
     .tabs .tabs-item:first-child {
         border-left: 1px solid #e2e2e2;
+    }
+
+    .tabs .tabs-item:last-child {
+        border-bottom: 1px solid #e2e2e2;
     }
 
     .tabs-nav-item {
@@ -491,10 +514,29 @@ import mixins from '../mixins/mixins'
         position: absolute;
         top: 29%;
         left: 7px;
+
+        @include max-width-430 {
+            flex-direction: row;
+            top: 10%;
+        }
     }
+
+    // .gallery-button-hover-info {
+    //     @include max-width-430 {
+    //         display: none;
+    //     }
+    // }
 
     .gallery-more-about-product-button:hover + .gallery-button-hover-info{
         display: inline-block;
+
+        @include max-width-430 {
+            display: none;
+        }
+    }
+
+    .gallery-more-about-product-button {
+        margin: 0 10px 0 0;
     }
 
     .gallery-price-block {
@@ -648,18 +690,36 @@ import mixins from '../mixins/mixins'
     .furniture-gallery-right {
         position: relative;
         width: 48.6%;
-        // border: 1px solid red;
+
+        @include max-width-850 {
+            width: 100%;
+        }
     }
 
     .furniture-gallery-right img {
         display: block;
-        margin: 10px 0 0 0;
+        height: 100%;
+        
+        @include max-width-850 {
+            width: 100%;
+            height: 85%;
+        }
+
+        @include max-width-430 {
+            height: 100%;
+        }
     }
 
     .furniture-gallery-right-info {
         position: absolute;
         top: 63px;
         left: 58px;
+
+        @include max-width-430 {
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
     }
 
     .furniture-gallery-right-info-from {
@@ -672,12 +732,20 @@ import mixins from '../mixins/mixins'
         font-size: 48px;
         font-weight: bold;
         color: #79ae30;
+
+        @include max-width-430 {
+            font-size: 35px;
+        }
     }
 
     .furniture-gallery-right-title {
         font-size: 48px;
         color: $secondColor;
         margin: -7px 0 29px 0;
+
+        @include max-width-430 {
+            font-size: 40px;
+        }
     }
 
     .furniture-gallery-right-shop-now {
