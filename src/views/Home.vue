@@ -12,7 +12,7 @@
                 </div>
                 <div class="main-slider-block-left-image">
                     <img src="../assets/images/360x300.jpg" alt="">
-                    <button class="add-to-cart">
+                    <button class="add-to-cart-hot-deals">
                         <i class="icon-shopping-basket"></i>
                         add to cart
                     </button>
@@ -96,7 +96,7 @@ import vSlider from '../components/Slider/V-slider.vue'
 import Tab from '../components/Tabs/Tab'
 import Tabs from '../components/Tabs/Tabs'
 import Gallery from '../components/Gallery/Gallery'
-// import mixins from '../mixins/mixins'
+import mixins from '../mixins/mixins'
 
     export default {
         data() {
@@ -205,6 +205,7 @@ import Gallery from '../components/Gallery/Gallery'
                 ],
             }
         },
+        mixins: [mixins],
         components: {
             CountdownTimer,
             vSlider,
@@ -278,7 +279,7 @@ import Gallery from '../components/Gallery/Gallery'
         display: block;
     }
 
-    .add-to-cart {
+    .add-to-cart-hot-deals {
         position: absolute;
         font-size: 13px;
         text-transform: uppercase;
