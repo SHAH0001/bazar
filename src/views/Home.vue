@@ -52,6 +52,7 @@
         <Features></Features>
         <Discount></Discount>
         <Products></Products>
+
         <div class="furniture-gallery-block">
             
             <div class="furniture-gallery-left">
@@ -83,32 +84,31 @@
             <div class="furniture-gallery-right">
                 <img :src="getImage('bedroom-bed.jpg')" alt="">
                 <div class="furniture-gallery-right-info">
-                    <span 
-                        class="furniture-gallery-right-info-from"
-                    >
+                    <span class="furniture-gallery-right-info-from">
                         From
                     </span>
-                    <span 
-                        class="furniture-gallery-right-info-price"
-                    >
+                    <span class="furniture-gallery-right-info-price">
                         $50.80
                     </span>
-                    <h3 
-                        class="furniture-gallery-right-title"
-                    >
+                    <h3 class="furniture-gallery-right-title">
                         Bedroom Bed
                     </h3>
-                    <router-link 
-                        class="furniture-gallery-right-shop-now" 
-                        to="/" 
-                        tag="a"
-                    >
+                    <router-link class="furniture-gallery-right-shop-now" to="/" tag="a">
                         Shop now
                     </router-link>
                 </div>
             </div>
             
         </div>
+
+        <SortingDisplay 
+            :title="'Latest blog'"
+            :enabledPoints="true"
+        >
+        </SortingDisplay>
+
+        <Articles></Articles>
+
         <footer style="height: 250px;"></footer>
     </div>
 </template>
@@ -117,6 +117,7 @@ import CountdownTimer from '../components/CountdownTimer.vue'
 import Features from '../components/Features.vue'
 import SortingDisplay from '../components/SortingDisplay.vue'
 import Discount from '../components/Discount.vue'
+import Articles from '../components/Articles.vue'
 import Products from '../components/Products.vue'
 import vSlider from '../components/Slider/V-slider.vue'
 import Tab from '../components/Tabs/Tab'
@@ -241,7 +242,8 @@ import mixins from '../mixins/mixins'
             Tab,
             Tabs,
             Gallery,
-            SortingDisplay
+            SortingDisplay,
+            Articles
         }
     }
 </script>
@@ -415,6 +417,7 @@ import mixins from '../mixins/mixins'
     .furniture-gallery-block {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 53px;
 
         @include max-width-850 {
             flex-wrap: wrap;
@@ -520,12 +523,6 @@ import mixins from '../mixins/mixins'
             top: 10%;
         }
     }
-
-    // .gallery-button-hover-info {
-    //     @include max-width-430 {
-    //         display: none;
-    //     }
-    // }
 
     .gallery-more-about-product-button:hover + .gallery-button-hover-info{
         display: inline-block;
