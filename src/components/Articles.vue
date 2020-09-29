@@ -16,9 +16,9 @@
             </div>
             <div class="article-info">
                 <div class="article-info-wrapper">
-                    <h3 class="article-title">
+                    <router-link to="/" tag="a" class="article-title">
                         Products That Fight Static
-                    </h3>
+                    </router-link>
                     <p class="article-description">
                         Aliquam dictum pellentesque nibh sit amet dapibus. Vivamus eget luctus nisi. Nullam euismod leo vehicula, rutrum magna in, ornare enim vehicula, rutrum magna in, ornare enim.
                     </p>
@@ -41,6 +41,7 @@ export default {
     .articles {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         margin-top: 30px;
     }
 
@@ -48,6 +49,24 @@ export default {
         display: flex;
         flex-direction: column;
         width: 31.6%;
+        margin-bottom: 5%;
+
+        @include max-width-950 {
+            width: 45%;
+        }
+
+        @include max-width-650 {
+            width: 80%;
+            margin: 0 auto 7% auto;
+        }
+
+        @include max-width-430 {
+            width: 100%;
+        }
+    }
+
+    .article:hover .article-title {
+        color: $secondColor;
     }
 
     .article-block-img {
@@ -107,6 +126,8 @@ export default {
     .article-title {
         font-size: 16px;
         margin: 10px 0 0 0;
+        text-decoration: none;
+        color: $mainColor;
     }
 
     .article-description {
@@ -125,6 +146,10 @@ export default {
         background-color: $mainColor;
         margin: 36px auto 0 auto;
         padding: 10px 40px;
+    }
+
+    .article:hover .article-link {
+        background-color: $secondColor;
     }
 
 </style>
