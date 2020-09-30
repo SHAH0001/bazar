@@ -87,7 +87,7 @@ export default {
         color: #676767;
         width: 84%;
         left: 50%;
-        bottom: 7px;
+        bottom: 4px;
         transform: translate(-50%, 0);
         background-color: #fff;
         padding: 20px 0;

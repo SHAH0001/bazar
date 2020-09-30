@@ -51,7 +51,7 @@
                 <i class="icon-arrow-left"></i>
             </button>
 
-            <div class="gallery-miniatures-block">
+            <div class="gallery-miniatures-block" id="galleryMiniaturesBlock">
                 <div 
                     class="gallery-miniatures"
                     :style="{'margin-left': -currentShift + 'px'}"
@@ -82,8 +82,11 @@ export default {
     data() {
         return {
             startShowImage: false,
-            maximumShift: 0,
-            currentShift: 0
+            // maximumShift: 0,
+            currentShift: 0,
+            currentWidthBlock: 0,
+            countPages: 0,
+            currentPage: 0,
         }
     },
     mixins: [mixins],
@@ -94,39 +97,40 @@ export default {
         },
         pictureWidth: {
             type: Number,
-            default: 84
+            default: 90
         },
-        displayContainerWidth: {
-            type: Number,
-            default: 470
-        }
+        // displayContainerWidth: {
+        //     type: Number,
+        //     default: 470
+        // }
     },
     methods: {
+        galleryCurrentWidth() {
+            this.currentWidthBlock = document.getElementById('galleryMiniaturesBlock').clientWidth
+        },
         galleryScrollLeft() {
-
-            if(this.currentShift -= this.pictureWidth * 2 <= 0 || this.currentShift <= this.pictureWidth) {
-                return this.currentShift = 0
+            if(this.currentShift != 0) {
+                return this.currentShift -= this.currentWidthBlock
             }
-
-            return this.currentShift = this.currentShift - this.pictureWidth
+            return
         },
         galleryScrollRight() {
+            let imagesWidth = this.images.length * this.pictureWidth / this.currentWidthBlock
             
-            if(this.currentShift >= this.maximumShift) {
+            if(this.currentShift === 0) {
+                this.countPages = Math.ceil(imagesWidth)
+                this.currentPage = 1
+                console.log('первое нажатие')
+                return this.currentShift = this.currentWidthBlock
+            }
+            
+            if(this.currentPage++ >= this.countPages || this.currentPage >= this.countPages) {
                 return
             }
-
-            if(this.currentShift === 0) {
-                return this.currentShift = this.pictureWidth * 2
-            }
-
-            if(this.currentShift += this.pictureWidth * 2 > this.maximumShift) {
-                return this.currentShift = this.maximumShift
-            }
             else {
-                this.currentShift *= 2
+                this.currentPage++
+                return this.currentShift += this.currentShift
             }
-                
         },
         galleryChangeImage(image) {
             return this.startShowImage = image
@@ -144,8 +148,8 @@ export default {
         StarRating
     },
     mounted() {
-        const widthAllPictures = this.pictureWidth * this.images.length
-        this.maximumShift = widthAllPictures - this.displayContainerWidth + 5
+        this.galleryCurrentWidth()
+        window.addEventListener('resize', this.galleryCurrentWidth)
     }
 }
 </script>
