@@ -97,12 +97,8 @@ export default {
         },
         pictureWidth: {
             type: Number,
-            default: 90
-        },
-        // displayContainerWidth: {
-        //     type: Number,
-        //     default: 470
-        // }
+            default: 70
+        }
     },
     methods: {
         galleryCurrentWidth() {
@@ -120,7 +116,6 @@ export default {
             if(this.currentShift === 0) {
                 this.countPages = Math.ceil(imagesWidth)
                 this.currentPage = 1
-                console.log('первое нажатие')
                 return this.currentShift = this.currentWidthBlock
             }
             

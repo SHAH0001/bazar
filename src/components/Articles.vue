@@ -124,6 +124,7 @@ export default {
     }
 
     .article-title {
+        display: inline-block;
         font-size: 16px;
         margin: 10px 0 0 0;
         text-decoration: none;
