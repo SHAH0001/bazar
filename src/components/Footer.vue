@@ -147,10 +147,29 @@ export default {
         justify-content: space-between;
         margin: 0 69px 0 18px;
         padding: 53px 0 58px 0;
+
+        @include max-width-1190 {
+            margin: 0;
+            justify-content: space-around;
+        }
+    
+        @include max-width-750 {
+            flex-wrap: wrap;
+            // flex-direction: column;
+            // justify-content: center;
+        }
     }
 
     .footer-top-column {
+        @include max-width-750 {
+            width: 45%;
+            margin-left: 20px;
+        }
 
+        @include max-width-750 {
+            width: 100%;
+            // margin: 0;
+        }
     }
 
     .footer-title {
@@ -158,6 +177,10 @@ export default {
         margin: 0;
         color: #fff;
         text-transform: uppercase;
+
+        @include max-width-750 {
+            margin: 10px 0 0 0;
+        }
     }
 
     .footer-nav-items {
@@ -177,6 +200,10 @@ export default {
     .footer-card-block {
         display: flex;
         margin: 22px -43px 0 0;
+
+        @include max-width-1190 {
+            display: none;
+        }
     }
 
     .footer-card-img-block {
@@ -194,6 +221,11 @@ export default {
         display: flex;
         justify-content: space-between;
         padding: 37px 0;
+
+        @include max-width-650 {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 
     .footer-bottom-wrapper i {
@@ -212,6 +244,15 @@ export default {
         flex-grow: 1;
         text-align: center;
         margin: 0 0 0 233px;
+
+        @include max-width-1190 {
+            margin: 0;
+        }
+
+        @include max-width-650 {
+            width: 100%;
+            margin-bottom: 30px;
+        }
     }
 
     .footer-bottom-links a {
