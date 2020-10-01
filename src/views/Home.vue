@@ -51,7 +51,16 @@
         </div>
         <Features></Features>
         <Discount></Discount>
-        <Products></Products>
+        <SortingDisplay :whatSortShow="'tabs'" :enabledPoints="true" :title="'New furniture'">
+            <div slot="tabs">
+                <a class="tabs-link" href="#">Bed</a>
+                <a class="tabs-link" href="#">Chair</a>
+                <a class="tabs-link" href="#">Sofa</a>
+                <a class="tabs-link" href="#">Table</a>
+                <a class="tabs-link" href="#">Dining</a>
+            </div>
+        </SortingDisplay>
+        <Products :data="products"></Products>
 
         <div class="furniture-gallery-block">
             
@@ -757,6 +766,17 @@ import mixins from '../mixins/mixins'
         background-color: #79ae30;
         padding: 17px 30px;
         border-radius: 5px;
+    }
+
+    .product-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 37px;
+        height: 37px;
+        border: 1px solid $mainColor;
+        cursor: pointer;
+        margin-right: 5px;
     }
 
 </style>

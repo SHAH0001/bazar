@@ -1,16 +1,7 @@
 <template>
     <div id="main-products-block">
-        <SortingDisplay :whatSortShow="'tabs'" :enabledPoints="true" :title="'New furniture'">
-            <div slot="tabs">
-                <a class="tabs-link" href="#">Bed</a>
-                <a class="tabs-link" href="#">Chair</a>
-                <a class="tabs-link" href="#">Sofa</a>
-                <a class="tabs-link" href="#">Table</a>
-                <a class="tabs-link" href="#">Dining</a>
-            </div>
-        </SortingDisplay>
-        <div class="products">
-            <div v-for="product in products" :key="product.id" class="product">
+        <div v-if="showGrid" class="products">
+            <div v-for="product in data" :key="product.id" class="product">
                 <div class="product-img-block">
                     <div class="discount" v-if="product.sale === 1">
                         <div class="discount-top"></div>
@@ -41,6 +32,44 @@
                 </div>
             </div>
         </div>
+        <div class="list-products" v-else>
+            <div v-for="product in data" :key="product.id" class="list-product-item">
+                <div class="list-product-img-block">
+                    <img :src="getImage(product.img)" alt="">
+                    <div class="discount" v-if="product.sale === 1">
+                        <div class="discount-top"></div>
+                        <div class="discount-bottom">Sale</div>
+                    </div>
+                </div>
+                <div class="list-product-info">
+                    <router-link 
+                        to="/product/aenean-ru-bristique" 
+                        tag="a" 
+                        class="product-info-title"
+                    >
+                        {{ product.name }}
+                    </router-link>
+                    <span v-if="product.oldPrice" class="list-old-price">${{ product.oldPrice }}.00</span>
+                    <span class="list-new-price">${{ product.newPrice }}.00</span>
+                    <p class="list-description">{{ product.description }}</p>
+                    
+                    <button class="button-product" type="button">
+                        <i class="icon-heart-o"></i>
+                    </button>
+                    <button class="button-product" type="button">
+                        <i class="icon-arrows-h"></i>
+                    </button>
+                    <button class="button-product" type="button">
+                        <i class="icon-search"></i>
+                    </button>
+                    <button class="list-basket" type="button">
+                        <span>Add to cart</span>
+                        <i class="icon-shopping-basket"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -51,117 +80,32 @@ import mixins from '../mixins/mixins'
 export default {
     data() {
         return {
-            products: [
-                {
-                    id: 1,
-                    sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_1.jpg',
-                    name: 'Aenean Ru Bristique',
-                    rating: Math.floor(Math.random() * Math.floor(6)),
-                    oldPrice: 30.00,
-                    newPrice: Math.floor(Math.random() * Math.floor(50)),
-                    description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
-                },
-                {
-                    id: 2,
-                    sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_2.jpg',
-                    name: 'Aenean Ru Bristique',
-                    rating: Math.floor(Math.random() * Math.floor(6)),
-                    oldPrice: false,
-                    newPrice: Math.floor(Math.random() * Math.floor(50)),
-                    description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
-                },
-                {
-                    id: 3,
-                    sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_3.jpg',
-                    name: 'Aenean Ru Bristique',
-                    rating: Math.floor(Math.random() * Math.floor(6)),
-                    oldPrice: false,
-                    newPrice: Math.floor(Math.random() * Math.floor(50)),
-                    description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
-                },
-                {
-                    id: 4,
-                    sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_4.jpg',
-                    name: 'Aenean Ru Bristique',
-                    rating: Math.floor(Math.random() * Math.floor(6)),
-                    oldPrice: false,
-                    newPrice: Math.floor(Math.random() * Math.floor(50)),
-                    description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
-                },
-                {
-                    id: 5,
-                    sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_5.jpg',
-                    name: 'Aenean Ru Bristique',
-                    rating: Math.floor(Math.random() * Math.floor(6)),
-                    oldPrice: Math.floor(Math.random() * Math.floor(30)),
-                    newPrice: Math.floor(Math.random() * Math.floor(50)),
-                    description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
-                },
-                {
-                    id: 6,
-                    sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_6.jpg',
-                    name: 'Aenean Ru Bristique',
-                    rating: Math.floor(Math.random() * Math.floor(6)),
-                    oldPrice: 30.00,
-                    newPrice: Math.floor(Math.random() * Math.floor(50)),
-                    description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
-                },
-                 {
-                    id: 7,
-                    sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_7.jpg',
-                    name: 'Aenean Ru Bristique',
-                    rating: Math.floor(Math.random() * Math.floor(6)),
-                    oldPrice: Math.floor(Math.random() * Math.floor(30)),
-                    newPrice: Math.floor(Math.random() * Math.floor(50)),
-                    description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
-                },
-                {
-                    id: 8,
-                    sale: Math.floor(Math.random() * Math.floor(2)),
-                    img: 'product_8.jpg',
-                    name: 'Aenean Ru Bristique',
-                    rating: Math.floor(Math.random() * Math.floor(6)),
-                    oldPrice: 30.00,
-                    newPrice: Math.floor(Math.random() * Math.floor(50)),
-                    description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
-                }
-            ],
-            topSellerStartImage: false
+           
         }
     },
     mixins: [mixins],
     methods: {
     },
+    props: {
+        data: {
+            required: true
+        },
+        showGrid: {
+            default: true,
+            type: Boolean
+        }
+    },
     components: {
         SortingDisplay,
         StarRating
-    }
+    },
 }
 </script>
 <style lang="scss">
     @import '@/assets/scss/style';
 
     #main-products-block {
-        margin: 53px 0 0 0;
-    }
-
-    .selection-options-block {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .selection-options {
-        font-size: 22px;
-        font-weight: bold;
-        color: $mainColor;
-        margin: 0;
+        margin: 30px 0 0 0;
     }
 
     .products {
@@ -169,7 +113,7 @@ export default {
         justify-content: space-between;
         flex-wrap: wrap;
         margin-top: 25px;
-        margin-bottom: 8px;
+        margin-bottom: 13px;
 
         @include max-width-1150 {
             justify-content: space-around;
@@ -270,7 +214,7 @@ export default {
         font-size: 16px;
         font-weight: bold;
         color: $mainColor;
-        margin: 14px 0 0 0;
+        margin: 9px 0 0 0;
         text-decoration: none;
     }
 
@@ -337,6 +281,39 @@ export default {
         color: #fff;
         background-color: $mainColor;
         padding: 6px 10px;
+    }
+
+    .list-product-item {
+        display: flex;
+    }
+
+    .list-product-img-block {
+        position: relative;
+    }
+
+    .list-product-img-block img {
+        width: 480px;
+        height: 260px;
+    }
+
+    .list-product-info {
+
+    }
+
+    .list-old-price {
+
+    }
+
+    .list-new-price {
+
+    }
+    
+    .list-description {
+
+    }
+
+    .list-basket {
+
     }
 
 </style>

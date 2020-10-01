@@ -78,13 +78,13 @@
                                 </div>
                                 <transition name="fade" v-if="selectCategoryMenu">
                                     <ul class="select-category-dropdown-items">
-                                        <li><a href="#">Accessories</a></li>
-                                        <li><a href="#">Mice And Trackballs</a></li>
-                                        <li><a href="#">Scanners</a></li>
-                                        <li><a href="#">Games and Consoles</a></li>
-                                        <li><a href="#">Cameras</a></li>
-                                        <li><a href="#">Headphones</a></li>
-                                        <li><a href="#">More Items</a></li>
+                                        <li><router-link to="/" tag="a">Accessories</router-link></li>
+                                        <li><router-link to="/" tag="a">Mice And Trackballs</router-link></li>
+                                        <li><router-link to="/" tag="a">Scanners</router-link></li>
+                                        <li><router-link to="/" tag="a">Games and Consoles</router-link></li>
+                                        <li><router-link to="/" tag="a">Cameras</router-link></li>
+                                        <li><router-link to="/" tag="a">Headphones</router-link></li>
+                                        <li><router-link to="/" tag="a">More Items</router-link></li>
                                     </ul>
                                 </transition>
                             </div>
@@ -96,13 +96,13 @@
                     <div class="header-bottom-right-nav">
                         <nav class="nav" :class="{'nav-mobile-show': mainNav}">
                             <ul class="nav-items">
-                                <li><a class="nav-items-link nav-items-link-active" href="#">Home</a></li>
-                                <li><a class="nav-items-link" href="#">Furniture</a></li>
-                                <li><a class="nav-items-link" href="#">Chair</a></li>
-                                <li><a class="nav-items-link" href="#">Table</a></li>
-                                <li><a class="nav-items-link" href="#">Sofa</a></li>
-                                <li><a class="nav-items-link" href="#">Bedroom</a></li>
-                                <li><a class="nav-items-link" href="#">Blog</a></li>
+                                <li><router-link to="/" exact class="nav-items-link">Home</router-link></li>
+                                <li><router-link to="/products" class="nav-items-link">Products</router-link></li>
+                                <li><router-link to="/chair" class="nav-items-link">Chair</router-link></li>
+                                <li><router-link to="/table" class="nav-items-link">Table</router-link></li>
+                                <li><router-link to="/sofa" class="nav-items-link">Sofa</router-link></li>
+                                <li><router-link to="/bedroom" class="nav-items-link">Bedroom</router-link></li>
+                                <li><router-link to="/blog" class="nav-items-link">Blog</router-link></li>
                             </ul><button @click="mainNav = !mainNav" class="close-mobile-menu" type="button"></button>
                         </nav>
                     </div>
@@ -140,6 +140,11 @@
         },
         directives: {
             clickOutside: vClickOutside.directive
+        },
+        watch: {
+            $route() {
+                this.mainNav = false
+            }
         }
     }
 </script>
@@ -688,6 +693,22 @@
             color: #fff;
             width: 100%;
         }
+    }
+
+    .nav .router-link-active {
+        position: relative;
+        background-color: $secondColor;
+        color: #fff;
+    }
+
+    .nav .router-link-active::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background-color: $mainColor;
+        top: 0;
+        left: 0;
     }
 
     .nav-items-link-active {

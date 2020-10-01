@@ -15,11 +15,11 @@
 
         <div class="sorting-sort-by" v-else-if="whatSortShow === 'sortBy'">
             
-            <h3 class="sort-by-title">Furniture</h3>
+            <h3 class="sort-by-title">{{ title }}</h3>
             
             <div class="sort-by-block">
                 <span class="sort-by-name">Sort By</span>
-                <select class="sort-by-select">
+                <select class="sort-by-select sort-by">
                     <option>Price: Lowest first</option>
                     <option>Price: Hight first</option>
                 </select>
@@ -27,7 +27,7 @@
             
             <div class="show-block">
                 <span class="sort-by-name">Show</span>
-                <select class="sort-by-select">
+                <select class="sort-by-select show-number">
                     <option>12</option>
                     <option>24</option>
                     <option>48</option>
@@ -36,31 +36,31 @@
 
             <div class="way-display-block">
                 
-                <div class="grid">
+                <div @click="gridShow()" class="grid">
                     <div class="grid-wrapper">
                         <div class="grid-top-block">
-                            <div class="grid-block-item"></div>
-                            <div class="grid-block-item"></div>
+                            <div class="grid-block-item" :class="{'active-grid': grid}"></div>
+                            <div class="grid-block-item" :class="{'active-grid': grid}"></div>
                         </div>
                         <div class="grid-bottom-block">
-                            <div class="grid-block-item"></div>
-                            <div class="grid-block-item"></div>
+                            <div class="grid-block-item" :class="{'active-grid': grid}"></div>
+                            <div class="grid-block-item" :class="{'active-grid': grid}"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="list">
+                <div @click="listShow()" class="list">
                     <div class="list-row">
-                        <div class="list-point"></div>
-                        <div class="list-line"></div>
+                        <div class="list-point" :class="{'active-grid': !grid}"></div>
+                        <div class="list-line" :class="{'active-grid': !grid}"></div>
                     </div>
                     <div class="list-row">
-                        <div class="list-point"></div>
-                        <div class="list-line"></div>
+                        <div class="list-point" :class="{'active-grid': !grid}"></div>
+                        <div class="list-line" :class="{'active-grid': !grid}"></div>
                     </div>
                     <div class="list-row">
-                        <div class="list-point"></div>
-                        <div class="list-line"></div>
+                        <div class="list-point" :class="{'active-grid': !grid}"></div>
+                        <div class="list-line" :class="{'active-grid': !grid}"></div>
                     </div>
                 </div>
 
@@ -71,6 +71,11 @@
 </template>
 <script>
     export default {
+        data() {
+            return {
+                grid: true
+            }
+        },
         props: {
             whatSortShow: {
                 type: String,
@@ -81,6 +86,16 @@
             },
             title: {
                 type: String
+            }
+        },
+        methods: {
+            gridShow() {
+                this.grid = true
+                this.$emit('grid')
+            },
+            listShow() {
+                this.grid = false
+                this.$emit('list')
             }
         }
     }
@@ -211,13 +226,20 @@
     .sorting-sort-by {
         display: flex;
         justify-content: space-between;
+        border-bottom: 1px solid $mainColor;
+        padding: 0 0 13px 0;
+        margin: 0 30px 0 0;
     }
 
     .sort-by-title {
         font-size: 22px;
         color: $mainColor;
         text-transform: uppercase;
-        margin: 0;
+        margin: 0 0 0 5px;
+    }
+
+    .sort-by-block {
+        margin: 0 0 0 130px;
     }
 
     .sort-by-name {
@@ -231,8 +253,17 @@
         color: #939393;
         border: 1px solid #b7b7b7;
         outline: none;
-        padding: 7px 49px 7px 10px;
+        // padding: 7px 49px 7px 10px;
+        // padding: 7px 0;
         margin: 0 0 0 13px;
+    }
+
+    .sort-by {
+        padding: 7px 49px 7px 10px;
+    }
+
+    .show-number {
+        padding: 7px 13px;
     }
 
     .way-display-block  {
@@ -277,6 +308,10 @@
     .grid,
     .list {
         cursor: pointer;
+    }
+
+    .active-grid {
+        background-color: $secondColor;
     }
 
 </style>

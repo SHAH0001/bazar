@@ -44,7 +44,7 @@ export default {
     .discount-block {
         display: flex;
         justify-content: space-between;
-        margin: 30px 0 0 0;
+        margin: 30px 0 53px 0;
 
         @include max-width-760 {
             flex-wrap: wrap;
