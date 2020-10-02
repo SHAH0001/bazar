@@ -24,7 +24,7 @@
                 </ul>
             </div>
             
-            <!-- <div class="filter-price">
+            <div class="filter-price">
                 <h3 class="filters-title">Filter by price</h3>
                 <vue-range-slider v-model="value"></vue-range-slider>
                 <div class="filter-price-controls">
@@ -35,19 +35,51 @@
                         <span>$500</span>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
-            <!-- <div class="filter-color">
+            <div class="filter-color">
                 <h3 class="filters-title">Filter by color</h3>
                 <ul class="color-items">
-                    <li v-for="(color, index) in filters['colorFilters']" :key="index">
-                        <div class="color-item-wrapper">
-                            <span :style="{backgroundColor: color}" class="color-item"></span>
-                            <span class="color-name">{{color}}</span>
+                    <li v-for="color in filters[1]" :key="color.id">
+                        <div 
+                            @click="applyFilter(color.id, 1)" 
+                            class="color-item-wrapper"
+                            :class="{'filter-name-active' : color.selected}"
+                        >
+                            <span :style="{backgroundColor: color.name}" class="color-item"></span>
+                            <span 
+                                :class="{'filter-name-active': color.selected}"
+                                class="color-name"
+                            >
+                                {{color.name}}
+                            </span>
                         </div>
                     </li>
                 </ul>
-            </div> -->
+            </div>
+
+            <div class="filter-size">
+                <h3 class="filters-title">Filter by size</h3>
+                <ul class="size-items">
+                    <li v-for="size in filters[2]" :key="size.id">
+                        <div 
+                            @click="applyFilter(size.id, 2)" 
+                            :class="{'filter-name-active': size.selected}" class="filter-size-select-and-name"
+                        >
+                            <span v-if="!size.selected" class="filter-size-checkbox not-selected"></span>
+                            <span v-else class="filter-size-checkbox selected">
+                                <i class="icon-check"></i>
+                            </span>
+                            <span :class="{'filter-name-active': size.selected}" class="filter-size-name">
+                                {{ size.name }}
+                            </span>
+                        </div>
+                        <span :class="{'filter-count-active': size.selected}" class="filter-item-count">
+                            {{ size.countProducts }}
+                        </span>
+                    </li>
+                </ul>
+            </div>
 
         </div>
         <!-- <button type="button">Filters</button> -->
@@ -131,6 +163,38 @@ export default {
                         selected: false,
                     }
                 ],
+                [
+                    {
+                        id: 1,
+                        name: 'S',
+                        countProducts: 3,
+                        selected: false,
+                    },
+                    {
+                        id: 2,
+                        name: 'M',
+                        countProducts: 4,
+                        selected: false,
+                    },
+                    {
+                        id: 3,
+                        name: 'L',
+                        countProducts: 5,
+                        selected: false,
+                    },
+                    {
+                        id: 4,
+                        name: 'XL',
+                        countProducts: 5,
+                        selected: false,
+                    },
+                    {
+                        id: 5,
+                        name: 'XX',
+                        countProducts: 5,
+                        selected: false,
+                    }
+                ]
             ],
             value: [0, 70]
         }
@@ -169,6 +233,10 @@ export default {
 
     .filter-categories {
         margin-bottom: 45px;
+    }
+
+    .filter-color {
+        margin: 0 0 46px 0;
     }
 
     .filters-title {
@@ -215,6 +283,7 @@ export default {
     }
 
     .filter-name-active {
+        // font-family: 'Poppins', Arial, Helvetica, sans-serif !important;
         color: $secondColor;
         margin-left: 12px;
     }
@@ -298,7 +367,53 @@ export default {
     .color-name {
         display: inline-block;
         font-size: 13px;
-        margin: 0 0 0 11px;
+        margin: 0 0 0 12px;
+    }
+
+    .size-items {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .size-items li {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 9px 0;
+    }
+
+    .filter-size-select-and-name {
+        cursor: pointer;
+    }
+
+    .filter-size-checkbox {
+        display: inline-block;
+        width: 13px;
+        height: 13px;
+        border-radius: 3px;
+    }
+
+    .not-selected {
+        border: 1px solid $mainColor;
+        background-color: #fff;
+    }
+
+    .selected {
+        border: 1px solid $secondColor;
+        background-color: $secondColor;
+    }
+
+    .selected i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        color: #fff;
+    }
+
+    .filter-size-name {
+        display: inline-block;
+        margin: 0 0 0 9px;
     }
 
 </style>
