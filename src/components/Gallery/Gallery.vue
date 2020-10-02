@@ -102,7 +102,7 @@ export default {
     },
     methods: {
         galleryCurrentWidth() {
-            // this.currentWidthBlock = document.getElementById('galleryMiniaturesBlock').clientWidth
+            this.currentWidthBlock = document.getElementById('galleryMiniaturesBlock').clientWidth
         },
         galleryScrollLeft() {
             if(this.currentShift != 0) {

@@ -687,6 +687,7 @@
         text-decoration: none;
         text-transform: uppercase;
         padding: 31px 17px;
+        cursor: pointer;
 
         @include max-width-650 {
             background-color: #ccc;

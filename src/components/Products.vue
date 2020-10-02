@@ -20,8 +20,8 @@
                         <div class="product-line"></div>
                         <div class="liked-and-price-block">
                             <div class="buttons-block">
-                                <button class="button-product" type="button"><i class="icon-heart-o"></i></button>
-                                <button class="button-product" type="button"><i class="icon-arrows-h"></i></button>
+                                <button class="button-product button-product-grid" type="button"><i class="icon-heart-o"></i></button>
+                                <button class="button-product button-product-grid" type="button"><i class="icon-arrows-h"></i></button>
                             </div>
                             <div class="prices-block">
                                 <span v-if="product.oldPrice" class="old-price">${{ product.oldPrice }}.00</span>
@@ -49,22 +49,27 @@
                     >
                         {{ product.name }}
                     </router-link>
-                    <span v-if="product.oldPrice" class="list-old-price">${{ product.oldPrice }}.00</span>
-                    <span class="list-new-price">${{ product.newPrice }}.00</span>
+                    <div class="list-prices">
+                        <span v-if="product.oldPrice" class="list-old-price">${{ product.oldPrice }}.00</span>
+                        <span class="list-new-price">${{ product.newPrice }}.00</span>
+                    </div>
+
+                    <StarRating :rating="product.rating"></StarRating>
+
                     <p class="list-description">{{ product.description }}</p>
                     
-                    <button class="button-product" type="button">
+                    <button class="button-product button-product-list" type="button">
                         <i class="icon-heart-o"></i>
                     </button>
-                    <button class="button-product" type="button">
+                    <button class="button-product button-product-list" type="button">
                         <i class="icon-arrows-h"></i>
                     </button>
-                    <button class="button-product" type="button">
+                    <button class="button-product button-product-list" type="button">
                         <i class="icon-search"></i>
                     </button>
                     <button class="list-basket" type="button">
-                        <span>Add to cart</span>
                         <i class="icon-shopping-basket"></i>
+                        <span>Add to cart</span>
                     </button>
 
                 </div>
@@ -256,7 +261,15 @@ export default {
         width: 37px;
         height: 37px;
         border: 1px solid $mainColor;
+        // margin: 19px 5px 0 0;
+    }
+
+    .button-product-grid {
         margin: 19px 5px 0 0;
+    }
+
+    .button-product-list {
+        margin: 29px 8px 0 0;
     }
 
     .prices-block {
@@ -283,8 +296,23 @@ export default {
         padding: 6px 10px;
     }
 
+    .list-products {
+        margin: 0 30px 0 0;
+    }
+
+    .list-product-info {
+        margin: -4px 0 0 22px;
+    }
+
+    .list-prices {
+        margin: 7px 0 9px 0;
+    }
+
     .list-product-item {
         display: flex;
+        border-bottom: 1px solid #d7d7d7;
+        padding: 0 0 23px 0;
+        margin: 0 0 30px 0;
     }
 
     .list-product-img-block {
@@ -296,24 +324,53 @@ export default {
         height: 260px;
     }
 
-    .list-product-info {
-
+    .list-product-title {
+        display: block;
+        text-decoration: none;
     }
 
     .list-old-price {
-
+        font-size: 18px;
+        font-weight: bold;
+        color: $mainColor;
+        margin-right: 13px;
     }
 
     .list-new-price {
-
+        font-size: 16px;
+        color: #a5a5a5;
+        text-decoration: line-through;
     }
     
     .list-description {
-
+        font-size: 14px;
+        color: #676767;
+        line-height: 25px;
+        margin: 13px 0 0 0;
+        padding: 0 0 22px 0;
+        border-bottom: 1px solid #a0a0a0;
     }
 
     .list-basket {
+        display: inline-block;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        background-color: $mainColor;
+        width: 138px;
+        height: 37px;
+        text-transform: uppercase;
+        color: #fff;
+        background-color: $secondColor;
+        cursor: pointer;
+    }
 
+    .list-basket i {
+        font-size: 15px;
+    }
+
+    .list-basket span {
+        margin: 0 0 0 7px;
     }
 
 </style>
