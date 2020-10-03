@@ -1,129 +1,135 @@
 <template>
-    <div class="filters">
-        <div class="filters-wrapper">
-            
-            <div class="filter-categories">
-                <h3 class="filters-title">Filter by categories</h3>
-                <ul class="filters-items">
-                    <li v-for="category in filters[0]" :key="category.id">
-                        <div @click="applyFilter(category.id, 0)" class="filter-item-wrapper">
-                            <span 
-                                :class="{'filter-name-active': category.selected}"
-                                class="filter-item-name"
-                            >
-                                >  {{ category.name }}
-                            </span>
-                            <span 
-                                :class="{'filter-count-active': category.selected}"
-                                class="filter-item-count"
-                            >
-                                {{ category.countProducts }}
-                            </span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="filter-price">
-                <h3 class="filters-title">Filter by price</h3>
-                <vue-range-slider v-model="value"></vue-range-slider>
-                <div class="filter-price-controls">
-                    <button class="filter-price-button" type="button">Filter</button>
-                    <div class="filter-prices-block">
-                        <span>$135</span>
-                        <span>-</span>
-                        <span>$500</span>
-                    </div>
+    <div>
+        <div v-if="!filtersShowMobile" class="filters" :class="{'filters-show-mobile' : filtersShowMobile}">
+            <div class="filters-wrapper">
+                
+                <button @click="filtersShowMobile = !filtersShowMobile" class="close-filters" type="button">Close</button>
+
+                <div class="filter-categories">
+                    <h3 class="filters-title">Filter by categories</h3>
+                    <ul class="filters-items">
+                        <li v-for="category in filters[0]" :key="category.id">
+                            <div @click="applyFilter(category.id, 0)" class="filter-item-wrapper">
+                                <span 
+                                    :class="{'filter-name-active': category.selected}"
+                                    class="filter-item-name"
+                                >
+                                    >  {{ category.name }}
+                                </span>
+                                <span 
+                                    :class="{'filter-count-active': category.selected}"
+                                    class="filter-item-count"
+                                >
+                                    {{ category.countProducts }}
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-
-            <div class="filter-color">
-                <h3 class="filters-title">Filter by color</h3>
-                <ul class="color-items">
-                    <li v-for="color in filters[1]" :key="color.id">
-                        <div 
-                            @click="applyFilter(color.id, 1)" 
-                            class="color-item-wrapper"
-                            :class="{'filter-name-active' : color.selected}"
-                        >
-                            <span :style="{backgroundColor: color.name}" class="color-item"></span>
-                            <span 
-                                :class="{'filter-name-active': color.selected}"
-                                class="color-name"
-                            >
-                                {{color.name}}
-                            </span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="filter-size">
-                <h3 class="filters-title">Filter by size</h3>
-                <ul class="size-items">
-                    <li v-for="size in filters[2]" :key="size.id">
-                        <div 
-                            @click="applyFilter(size.id, 2)" 
-                            :class="{'filter-name-active': size.selected}" class="filter-size-select-and-name"
-                        >
-                            <span v-if="!size.selected" class="filter-size-checkbox not-selected"></span>
-                            <span v-else class="filter-size-checkbox selected">
-                                <i class="icon-check"></i>
-                            </span>
-                            <span :class="{'filter-name-active': size.selected}" class="filter-size-name">
-                                {{ size.name }}
-                            </span>
-                        </div>
-                        <span :class="{'filter-count-active': size.selected}" class="filter-item-count">
-                            {{ size.countProducts }}
-                        </span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="filter-tags">
-                <h3 class="filters-title">Filter by tags</h3>
-                <div class="filter-tags-items">
-                    <span
-                        class="filter-tag" 
-                        :class="{'filter-tag-border': tag.selected}"
-                        v-for="tag in filters[3]" 
-                        :key="tag.id"
-                        @click="applyFilter(tag.id, 3)"
-                    >
-                        <i 
-                            :class="{'filter-tag-color': tag.selected}"
-                            class="icon-tags"
-                        ></i>
-                        <span 
-                            :class="{'filter-tag-color': tag.selected}"
-                            class="filter-tag-name"
-                        >
-                            {{ tag.name }}
-                        </span>
-                    </span>
-                </div>
-            </div>
-
-            <div class="featured-products-block">
-                <h3 class="featured-products-title">Featured products</h3>
-                <div class="featured-products-items">
-                    <div v-for="item in featuredProducts" :key="item.id" class="featured-products-item">
-                        <div class="featured-products-item-img">
-                            <img :src="getImage(item.img)" alt="">
-                        </div>
-                        <div class="featured-products-item-info">
-                            <router-link to="/" tag="a" class="featured-products-item-title">{{ item.name }}</router-link>
-                            <h4 class="featured-products-item-price">${{ item.price }}.00</h4>
-                            <StarRating :rating="item.rating"></StarRating>
-                            <router-link class="featured-products-item-link" to="/" tag="a">Add to cart</router-link>
+                
+                <div class="filter-price">
+                    <h3 class="filters-title">Filter by price</h3>
+                    <vue-range-slider v-model="value"></vue-range-slider>
+                    <div class="filter-price-controls">
+                        <button class="filter-price-button" type="button">Filter</button>
+                        <div class="filter-prices-block">
+                            <span>$135</span>
+                            <span>-</span>
+                            <span>$500</span>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <div class="filter-color">
+                    <h3 class="filters-title">Filter by color</h3>
+                    <ul class="color-items">
+                        <li v-for="color in filters[1]" :key="color.id">
+                            <div 
+                                @click="applyFilter(color.id, 1)" 
+                                class="color-item-wrapper"
+                                :class="{'filter-name-active' : color.selected}"
+                            >
+                                <span :style="{backgroundColor: color.name}" class="color-item"></span>
+                                <span 
+                                    :class="{'filter-name-active': color.selected}"
+                                    class="color-name"
+                                >
+                                    {{color.name}}
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="filter-size">
+                    <h3 class="filters-title">Filter by size</h3>
+                    <ul class="size-items">
+                        <li v-for="size in filters[2]" :key="size.id">
+                            <div 
+                                @click="applyFilter(size.id, 2)" 
+                                :class="{'filter-name-active': size.selected}" class="filter-size-select-and-name"
+                            >
+                                <span v-if="!size.selected" class="filter-size-checkbox not-selected"></span>
+                                <span v-else class="filter-size-checkbox selected">
+                                    <i class="icon-check"></i>
+                                </span>
+                                <span :class="{'filter-name-active': size.selected}" class="filter-size-name">
+                                    {{ size.name }}
+                                </span>
+                            </div>
+                            <span :class="{'filter-count-active': size.selected}" class="filter-item-count">
+                                {{ size.countProducts }}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="filter-tags">
+                    <h3 class="filters-title">Filter by tags</h3>
+                    <div class="filter-tags-items">
+                        <span
+                            class="filter-tag" 
+                            :class="{'filter-tag-border': tag.selected}"
+                            v-for="tag in filters[3]" 
+                            :key="tag.id"
+                            @click="applyFilter(tag.id, 3)"
+                        >
+                            <i 
+                                :class="{'filter-tag-color': tag.selected}"
+                                class="icon-tags"
+                            ></i>
+                            <span 
+                                :class="{'filter-tag-color': tag.selected}"
+                                class="filter-tag-name"
+                            >
+                                {{ tag.name }}
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="featured-products-block">
+                    <h3 class="featured-products-title">Featured products</h3>
+                    <div class="featured-products-items">
+                        <div v-for="item in featuredProducts" :key="item.id" class="featured-products-item">
+                            <div class="featured-products-item-img">
+                                <img :src="getImage(item.img)" alt="">
+                            </div>
+                            <div class="featured-products-item-info">
+                                <router-link to="/" tag="a" class="featured-products-item-title">{{ item.name }}</router-link>
+                                <h4 class="featured-products-item-price">${{ item.price }}.00</h4>
+                                <StarRating :rating="item.rating"></StarRating>
+                                <router-link class="featured-products-item-link" to="/" tag="a">Add to cart</router-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <!-- <button type="button">Filters</button> -->
+        <button @click="filtersShowMobile = !filtersShowMobile" v-if="filtersShowMobile" class="show-filters">
+            <i class="icon-filter"></i>
+        </button>
     </div>
 </template>
 <script>
@@ -294,7 +300,9 @@ export default {
                     price: Math.floor(Math.random() * Math.floor(500)),
                     rating: Math.floor(Math.random() * Math.floor(6)),
                 }
-            ]
+            ],
+            filtersShowMobile: false,
+            screenWidth: 0
         }
     },
     mixins: [mixins],
@@ -306,12 +314,28 @@ export default {
                     this.filters.index = element
                 }
             })
+        },
+        showFilters() {
+            this.filtersShowMobile = false
+        },
+        getScreenWidth() {
+            let currentWidth = window.innerWidth
+            // console.log(currentWidth)
+            if(currentWidth <= 1190) {
+                this.filtersShowMobile = true
+            }
+            // this.screenWidth = window.innerWidth
         }
     },
     components: {
         VueRangeSlider,
         StarRating
     },
+    mounted() {
+        this.getScreenWidth()
+        window.addEventListener('resize', this.getScreenWidth)
+
+    }
 }
 </script>
 <style lang="scss">
@@ -319,16 +343,81 @@ export default {
 
     .filters {
         margin: -8px 0 0 0;
+
+        @include max-width-1190 {
+            position: fixed;
+            top: 0;
+            right: 0;
+            margin: 0;
+            z-index: 11;
+            background: rgba(0, 0, 0, .71);
+            width: 100%;
+            height: 100vh;
+            overflow: scroll;
+        }
+    }
+
+    .close-filters {
+        display: none;
+
+        @include max-width-1190 {
+            display: inline-block;
+            font-weight: bold;
+            width: 100%;
+            padding: 10px 20px;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            background-color: $secondColor;
+            margin: 10px 0;
+        }
+    }
+
+    .filters-show-mobile {
+        right: 0;
+        padding: 0 10px;
     }
 
     .filters-wrapper {
         width: 262px;
         flex-shrink: 0;
-
+        // border: 1px solid red;
         @include max-width-1190 {
+            // display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #fff;
+            z-index: 12;
+            padding: 10px;
+        }
+    }
+
+    .show-filters {
+        position: fixed;
+        top: 75%;
+        right: 0;
+        font-size: 30px;
+        width: 5rem;
+        height: 5rem;
+        line-height: 5rem;
+        cursor: pointer;
+        outline: none;
+        color: #333;
+        text-align: center;
+        z-index: 120;
+        border-top-left-radius: 3.5rem;
+        border-bottom-left-radius: 3.5rem;
+        box-shadow: 0 0 0.5rem rgba(0,0,0,.17);
+        background-color: #fff;
+        border: 2px solid $mainColor;
+
+        @include min-width-1191 {
             display: none;
         }
-
     }
 
     .filter-categories {

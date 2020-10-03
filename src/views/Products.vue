@@ -255,12 +255,16 @@ export default {
     }
 
     .products-page .product {
-        width: 30%;
+        width: 29%;
         margin: 0 29px 35px 0;
 
         @include max-width-1190 {
             width: 23%;
             margin: 0 0 35px 0;
+        }
+
+        @include max-width-950 {
+            width: 30%;
         }
 
         @include max-width-850 {
