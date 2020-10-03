@@ -81,6 +81,47 @@
                 </ul>
             </div>
 
+            <div class="filter-tags">
+                <h3 class="filters-title">Filter by tags</h3>
+                <div class="filter-tags-items">
+                    <span
+                        class="filter-tag" 
+                        :class="{'filter-tag-border': tag.selected}"
+                        v-for="tag in filters[3]" 
+                        :key="tag.id"
+                        @click="applyFilter(tag.id, 3)"
+                    >
+                        <i 
+                            :class="{'filter-tag-color': tag.selected}"
+                            class="icon-tags"
+                        ></i>
+                        <span 
+                            :class="{'filter-tag-color': tag.selected}"
+                            class="filter-tag-name"
+                        >
+                            {{ tag.name }}
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="featured-products-block">
+                <h3 class="featured-products-title">Featured products</h3>
+                <div class="featured-products-items">
+                    <div v-for="item in featuredProducts" :key="item.id" class="featured-products-item">
+                        <div class="featured-products-item-img">
+                            <img :src="getImage(item.img)" alt="">
+                        </div>
+                        <div class="featured-products-item-info">
+                            <router-link to="/" tag="a" class="featured-products-item-title">{{ item.name }}</router-link>
+                            <h4 class="featured-products-item-price">${{ item.price }}.00</h4>
+                            <StarRating :rating="item.rating"></StarRating>
+                            <router-link class="featured-products-item-link" to="/" tag="a">Add to cart</router-link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <!-- <button type="button">Filters</button> -->
     </div>
@@ -88,6 +129,8 @@
 <script>
 import 'vue-range-component/dist/vue-range-slider.css'
 import VueRangeSlider from 'vue-range-component'
+import mixins from '../mixins/mixins'
+import StarRating from './StarRating'
 
 export default {
     data() {
@@ -194,11 +237,67 @@ export default {
                         countProducts: 5,
                         selected: false,
                     }
+                ],
+                [
+                    {
+                        id: 1,
+                        name: 'Table',
+                        selected: false
+                    },
+                    {
+                        id: 2,
+                        name: 'Chair',
+                        selected: false
+                    },
+                    {
+                        id: 3,
+                        name: 'Hand Bag',
+                        selected: false
+                    },
+                    {
+                        id: 4,
+                        name: 'Women',
+                        selected: false
+                    },
+                    {
+                        id: 5,
+                        name: 'Fashion',
+                        selected: false
+                    },
+                    {
+                        id: 6,
+                        name: 'Clothes',
+                        selected: false
+                    },
                 ]
             ],
-            value: [0, 70]
+            value: [0, 70],
+            featuredProducts: [
+                {
+                    id: 1,
+                    name: 'Office Chair',
+                    img: 'featured_products_1.jpg',
+                    price: Math.floor(Math.random() * Math.floor(500)),
+                    rating: Math.floor(Math.random() * Math.floor(6)),
+                },
+                {
+                    id: 2,
+                    name: 'Office Chair',
+                    img: 'featured_products_2.jpg',
+                    price: Math.floor(Math.random() * Math.floor(500)),
+                    rating: Math.floor(Math.random() * Math.floor(6)),
+                },
+                {
+                    id: 3,
+                    name: 'Office Chair',
+                    img: 'featured_products_3.jpg',
+                    price: Math.floor(Math.random() * Math.floor(500)),
+                    rating: Math.floor(Math.random() * Math.floor(6)),
+                }
+            ]
         }
     },
+    mixins: [mixins],
     methods: {
         applyFilter(id, index) {
             this.filters[index].forEach((element) => {
@@ -210,7 +309,8 @@ export default {
         }
     },
     components: {
-        VueRangeSlider
+        VueRangeSlider,
+        StarRating
     },
 }
 </script>
@@ -283,7 +383,6 @@ export default {
     }
 
     .filter-name-active {
-        // font-family: 'Poppins', Arial, Helvetica, sans-serif !important;
         color: $secondColor;
         margin-left: 12px;
     }
@@ -370,6 +469,10 @@ export default {
         margin: 0 0 0 12px;
     }
 
+    .filter-size {
+        margin: 0 0 45px 0;
+    }
+
     .size-items {
         margin: 0;
         padding: 0;
@@ -383,6 +486,8 @@ export default {
     }
 
     .filter-size-select-and-name {
+        display: flex;
+        align-items: center;
         cursor: pointer;
     }
 
@@ -414,6 +519,88 @@ export default {
     .filter-size-name {
         display: inline-block;
         margin: 0 0 0 9px;
+    }
+
+    .filter-tags-items {
+        margin: 30px 0 0 0;
+    }
+
+    .filter-tag {
+        display: inline-block;
+        cursor: pointer;
+        border: 1px solid #d7d7d7;
+        padding: 4px 10px;
+        margin: 0 16px 12px 0;
+    }
+
+    .filter-tag-name {
+        display: inline-block;
+        margin: 0 0 0 10px;
+    }
+
+    .filter-tag-color {
+        color: $secondColor;
+    }
+
+    .filter-tag-border {
+        border: 1px solid $secondColor;
+    }
+
+    .featured-products-title {
+        font-size: 20px;
+        color: #fff;
+        text-transform: uppercase;
+        background-color: $mainColor;
+        padding: 6px 0 6px 12px;
+        margin: 2px 0 0 0;
+    }
+
+    .featured-products-items {
+        margin: 30px 0 0 0;
+    }
+
+    .featured-products-item {
+        display: flex;
+        margin: 0 0 6px 0;
+    }
+
+    .featured-products-item-info {
+        margin: 0 0 0 14px;
+    }
+
+    .featured-products-item:hover .featured-products-item-title {
+        color: $secondColor;
+    }
+
+    .featured-products-item-title {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        margin: 14px 0 0 0;
+        text-decoration: none;
+        color: $mainColor;
+    }
+
+    .featured-products-item-price {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 4px 0 0 0;
+    }
+
+    .featured-products-item:hover .featured-products-item-link {
+        background-color: $secondColor;
+    }
+
+    .featured-products-item-link {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: bold;
+        color: #fff;
+        background-color: $mainColor;
+        padding: 9px 15px;
+        text-transform: uppercase;
+        text-decoration: none;
+        margin: 12px 0 0 0;
     }
 
 </style>
