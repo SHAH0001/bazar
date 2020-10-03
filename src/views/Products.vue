@@ -18,8 +18,8 @@
         </div>
         <div class="products-and-filters">
             <div class="products-and-sort products-page">
-                <SortingDisplay @grid="grid" @list="list" :whatSortShow="'sortBy'" :title="'Furniture'">
-                </SortingDisplay>
+                <!-- <SortingDisplay @grid="grid" @list="list" :whatSortShow="'sortBy'" :title="'Furniture'">
+                </SortingDisplay> -->
                 <Products :showGrid="showGrid" :data="products"></Products>
             </div>
             <Filters></Filters>

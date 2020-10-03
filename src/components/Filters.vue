@@ -137,7 +137,6 @@ import 'vue-range-component/dist/vue-range-slider.css'
 import VueRangeSlider from 'vue-range-component'
 import mixins from '../mixins/mixins'
 import StarRating from './StarRating'
-
 export default {
     data() {
         return {
@@ -319,12 +318,12 @@ export default {
             this.filtersShowMobile = false
         },
         getScreenWidth() {
-            let currentWidth = window.innerWidth
-            // console.log(currentWidth)
-            if(currentWidth <= 1190) {
-                this.filtersShowMobile = true
+            if(window.innerWidth <= 1190) {
+                return this.filtersShowMobile = true
             }
-            // this.screenWidth = window.innerWidth
+            else {
+                return this.filtersShowMobile = false
+            }
         }
     },
     components: {
@@ -334,16 +333,14 @@ export default {
     mounted() {
         this.getScreenWidth()
         window.addEventListener('resize', this.getScreenWidth)
-
     }
 }
 </script>
 <style lang="scss">
     @import '@/assets/scss/style';
-
+    
     .filters {
         margin: -8px 0 0 0;
-
         @include max-width-1190 {
             position: fixed;
             top: 0;
@@ -359,7 +356,6 @@ export default {
 
     .close-filters {
         display: none;
-
         @include max-width-1190 {
             display: inline-block;
             font-weight: bold;
@@ -384,9 +380,8 @@ export default {
     .filters-wrapper {
         width: 262px;
         flex-shrink: 0;
-        // border: 1px solid red;
+
         @include max-width-1190 {
-            // display: none;
             position: absolute;
             top: 0;
             right: 0;
@@ -414,7 +409,7 @@ export default {
         box-shadow: 0 0 0.5rem rgba(0,0,0,.17);
         background-color: #fff;
         border: 2px solid $mainColor;
-
+       
         @include min-width-1191 {
             display: none;
         }
@@ -691,5 +686,5 @@ export default {
         text-decoration: none;
         margin: 12px 0 0 0;
     }
-
+    
 </style>
