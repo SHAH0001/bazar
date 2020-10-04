@@ -145,7 +145,7 @@ export default {
     .footer-top-columns {
         display: flex;
         justify-content: space-between;
-        margin: 0 69px 0 18px;
+        margin: 0 69px 0 7px;
         padding: 53px 0 58px 0;
 
         @include max-width-1190 {

@@ -118,21 +118,44 @@
 
         <Articles></Articles>
 
+        <Brands style="margin-bottom: 52px;" :brands="brands"></Brands>
+
+        <SortingDisplay 
+            :whatSortShow="'tabs'" 
+            :enabledPoints="true" 
+            :title="'Client feedback'"
+        >
+        </SortingDisplay>
+
+        <div class="feedback">
+            <i class="icon-quote-right"></i>
+            <p class="feedback-description">
+                Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
+            </p>
+            <div class="feedback-user">
+                <div class="feedback-user-icon"></div>
+                <div class="feedback-user-info">
+                    <router-link to="/" tag="a" class="feedback-user-name">John Smith</router-link>
+                    <h4 class="feedback-user-customer">Furniture client</h4>
+                </div>
+            </div>
+        </div>
 
     </div>
 </template>
 <script>
-import CountdownTimer from '../components/CountdownTimer.vue'
-import Features from '../components/Features.vue'
-import SortingDisplay from '../components/SortingDisplay.vue'
-import Discount from '../components/Discount.vue'
-import Articles from '../components/Articles.vue'
-import Products from '../components/Products.vue'
-import vSlider from '../components/Slider/V-slider.vue'
-import Tab from '../components/Tabs/Tab'
-import Tabs from '../components/Tabs/Tabs'
-import Gallery from '../components/Gallery/Gallery'
-import mixins from '../mixins/mixins'
+    import CountdownTimer from '../components/CountdownTimer.vue'
+    import Features from '../components/Features.vue'
+    import SortingDisplay from '../components/SortingDisplay.vue'
+    import Discount from '../components/Discount.vue'
+    import Articles from '../components/Articles.vue'
+    import Products from '../components/Products.vue'
+    import vSlider from '../components/Slider/V-slider.vue'
+    import Tab from '../components/Tabs/Tab'
+    import Tabs from '../components/Tabs/Tabs'
+    import Gallery from '../components/Gallery/Gallery'
+    import mixins from '../mixins/mixins'
+    import Brands from '../components/Brands'
 
     export default {
         data() {
@@ -239,10 +262,33 @@ import mixins from '../mixins/mixins'
                         description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
                     }
                 ],
+                brands: [
+                    {
+                        id: 1,
+                        img: 'brand_1.png'
+                    },
+                    {
+                        id: 2,
+                        img: 'brand_2.png'
+                    },
+                    {
+                        id: 3,
+                        img: 'brand_3.png'
+                    },
+                    {
+                        id: 4,
+                        img: 'brand_4.png'
+                    },
+                    {
+                        id: 5,
+                        img: 'brand_5.png'
+                    },
+                    {
+                        id: 6,
+                        img: 'brand_1.png'
+                    }
+                ]
             }
-        },
-        methods: {
-            
         },
         mixins: [mixins],
         components: {
@@ -255,7 +301,8 @@ import mixins from '../mixins/mixins'
             Tabs,
             Gallery,
             SortingDisplay,
-            Articles
+            Articles,
+            Brands
         }
     }
 </script>
@@ -486,14 +533,6 @@ import mixins from '../mixins/mixins'
         border-bottom: 1px solid #e2e2e2;
     }
 
-    .tabs-nav-item {
-
-    }
-
-    .tabs-details {
-
-    }
-
     .tabs-is-active {
         position: relative;
         background-color: #f4f5f7;
@@ -629,22 +668,6 @@ import mixins from '../mixins/mixins'
         margin-bottom: 8px;
     }
 
-    .gallery-more-about-product-button-heart {
-
-    }
-
-    .gallery-more-about-product-button-arrows {
-
-    }
-
-    .gallery-more-about-product-button-eye {
-
-    }
-
-    .gallery-more-about-product-button-shopping-basket {
-        
-    }
-
     .gallery-content {
         display: flex;
         position: relative;
@@ -777,6 +800,57 @@ import mixins from '../mixins/mixins'
         border: 1px solid $mainColor;
         cursor: pointer;
         margin-right: 5px;
+    }
+
+    .feedback {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // text-align: center;
+        padding: 30px 0 62px 0;
+    }
+
+    .feedback i {
+        font-size: 26px;
+    }
+
+    .feedback-description {
+        @include max-width-1190 {
+            padding: 0 20px;
+        }
+    }
+
+    .feedback-user {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 196px;
+        margin: 13px 0 0 0;
+    }
+
+    .feedback-user-icon {
+        width: 60px;
+        height: 52px;
+        border-radius: 3px;
+        background-color: #676767;
+        // margin: 0 0 0 0;
+    }
+
+    .feedback-user-info {
+        color: #676767;
+        margin: -4px 14px 0 0;
+    }
+
+    .feedback-user-name {
+        font-size: 16px;
+        color: #676767;
+        text-decoration: none;
+    }   
+
+    .feedback-user-customer {
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
     }
 
 </style>

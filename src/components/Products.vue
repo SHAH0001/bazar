@@ -75,17 +75,20 @@
                 </div>
             </div>
         </div>
+        <button v-if="showReload" class="add-more">
+            <i class="icon-refresh"></i>
+        </button>
     </div>
 </template>
 <script>
-import SortingDisplay from './SortingDisplay'
+
 import StarRating from './StarRating'
 import mixins from '../mixins/mixins'
 
 export default {
     data() {
         return {
-           
+            
         }
     },
     mixins: [mixins],
@@ -98,10 +101,12 @@ export default {
         showGrid: {
             default: true,
             type: Boolean
+        },
+        showReload: {
+            default: false,
         }
     },
     components: {
-        SortingDisplay,
         StarRating
     },
 }
@@ -219,7 +224,7 @@ export default {
         font-size: 16px;
         font-weight: bold;
         color: $mainColor;
-        margin: 9px 0 0 0;
+        margin: 8px 0 0 0;
         text-decoration: none;
     }
 
@@ -228,7 +233,7 @@ export default {
         width: 100%;
         height: 1px;
         background-color: $mainColor;
-        margin: 14px 0 0 0;
+        margin: 15px 0 0 0;
     }
 
     .product-line::before {
@@ -409,6 +414,20 @@ export default {
 
     .list-basket span {
         margin: 0 0 0 7px;
+    }
+
+    .add-more {
+        display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #eeeeee;
+        margin: 0 auto;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        font-size: 20px;
+        box-shadow: 0px 4px 6px 0px rgba(50, 50, 50, 0.2);
     }
 
 </style>

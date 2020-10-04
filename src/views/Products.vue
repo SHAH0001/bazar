@@ -20,7 +20,13 @@
             <div class="products-and-sort products-page">
                 <SortingDisplay @grid="grid" @list="list" :whatSortShow="'sortBy'" :title="'Furniture'">
                 </SortingDisplay>
-                <Products :showGrid="showGrid" :data="products"></Products>
+                <Products 
+                    :showGrid="showGrid" 
+                    :data="products" 
+                    :showReload="true"
+                    :showBrands="true"
+                >
+                </Products>
             </div>
             <Filters></Filters>
         </div>
@@ -185,10 +191,6 @@ export default {
         }
     }
 
-    .products-ads {
-
-    }
-
     .products-ads-info {
         background-color: #3f3f3f;
         text-transform: uppercase;
@@ -264,7 +266,7 @@ export default {
     }
 
     .products-page .product {
-        width: 29%;
+        width: 30%;
         margin: 0 29px 35px 0;
 
         @include max-width-1190 {
