@@ -685,6 +685,10 @@ export default {
         text-transform: uppercase;
         text-decoration: none;
         margin: 12px 0 0 0;
+
+        @include max-width-1190 {
+            font-size: 10px;
+        }
     }
     
 </style>

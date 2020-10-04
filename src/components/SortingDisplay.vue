@@ -226,9 +226,20 @@
     .sorting-sort-by {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         border-bottom: 1px solid $mainColor;
         padding: 0 0 13px 0;
         margin: 0 30px 0 0;
+
+        @include max-width-1190 {
+            margin: 0;
+            justify-content: space-around;
+        }
+
+        @include max-width-650 {
+            flex-direction: column;
+            align-items: baseline;
+        }
     }
 
     .sort-by-title {
@@ -236,10 +247,47 @@
         color: $mainColor;
         text-transform: uppercase;
         margin: 0 0 0 5px;
+
+        @include max-width-1190 {
+            // margin: 0 0 20px 0;
+            margin: 0;
+        }
+
+        @include max-width-650 {
+            // margin: 0 0 20px 0;
+            margin: 0 0 20px 0;
+        }
     }
 
     .sort-by-block {
         margin: 0 0 0 130px;
+
+        @include max-width-1190 {
+            margin: 0;
+        }
+
+        @include max-width-650 {
+            margin: 0 0 20px 0;
+        }
+    }
+
+    .sort-by-block select {
+
+        @include max-width-650 {
+            margin: 0 0 0 20px;
+        }
+    }
+
+    .show-block {
+        @include max-width-650 { 
+            margin: 0 0 20px 0;
+        }
+    }
+
+    .show-block select {
+        @include max-width-650 {
+            margin: 0 0 0 31px;
+        }
     }
 
     .sort-by-name {
@@ -253,9 +301,11 @@
         color: #939393;
         border: 1px solid #b7b7b7;
         outline: none;
-        // padding: 7px 49px 7px 10px;
-        // padding: 7px 0;
         margin: 0 0 0 13px;
+
+        @include max-width-650 {
+            margin: 0;
+        }
     }
 
     .sort-by {
@@ -272,6 +322,11 @@
         align-items: center;
         width: 67px;
         border: 1px solid #b7b7b7;
+        padding: 5px 0;
+
+        @include max-width-650 {
+            // padding: 5px 0;
+        }
     }
 
     .grid-top-block,

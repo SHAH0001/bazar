@@ -18,8 +18,8 @@
         </div>
         <div class="products-and-filters">
             <div class="products-and-sort products-page">
-                <!-- <SortingDisplay @grid="grid" @list="list" :whatSortShow="'sortBy'" :title="'Furniture'">
-                </SortingDisplay> -->
+                <SortingDisplay @grid="grid" @list="list" :whatSortShow="'sortBy'" :title="'Furniture'">
+                </SortingDisplay>
                 <Products :showGrid="showGrid" :data="products"></Products>
             </div>
             <Filters></Filters>
@@ -201,6 +201,10 @@ export default {
         font-size: 54px;
         font-weight: 100;
         margin: 0;
+
+        @include max-width-430 {
+            font-size: 45px;
+        }
     }
 
     .products-ads-description {
@@ -208,6 +212,11 @@ export default {
         font-weight: 100;
         margin: -14px 0 0 0;
         letter-spacing: 14px;
+
+        @include max-width-650 {
+            margin: 0;
+            padding: 0 15px;
+        }
     }
 
     .products-ads-description span {
