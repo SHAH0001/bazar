@@ -31,7 +31,7 @@ export default {
     }
 
     .mail-wrapper {
-        // text-align: center;
+        
     }
 
     .mail-title {

@@ -82,7 +82,6 @@ export default {
     data() {
         return {
             startShowImage: false,
-            // maximumShift: 0,
             currentShift: 0,
             currentWidthBlock: 0,
             countPages: 0,
@@ -102,7 +101,7 @@ export default {
     },
     methods: {
         galleryCurrentWidth() {
-            this.currentWidthBlock = document.getElementById('galleryMiniaturesBlock').clientWidth
+            return this.currentWidthBlock = document.getElementById('galleryMiniaturesBlock').clientWidth
         },
         galleryScrollLeft() {
             if(this.currentShift != 0) {
@@ -157,7 +156,6 @@ export default {
     }
 
     .gallery-button-hover-info {
-        // display: inline-block;
         display: none;
         font-size: 12px;
         position: relative;

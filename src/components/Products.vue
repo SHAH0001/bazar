@@ -422,7 +422,7 @@ export default {
         height: 50px;
         border-radius: 50%;
         background-color: #eeeeee;
-        margin: 0 auto;
+        margin: 0 auto 30px auto;
         border: none;
         cursor: pointer;
         outline: none;
