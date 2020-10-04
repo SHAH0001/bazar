@@ -261,7 +261,6 @@ export default {
         width: 37px;
         height: 37px;
         border: 1px solid $mainColor;
-        // margin: 19px 5px 0 0;
     }
 
     .button-product-grid {
@@ -270,6 +269,10 @@ export default {
 
     .button-product-list {
         margin: 29px 8px 0 0;
+
+        @include max-width-550 {
+            margin: 29px 4px 0 4px;        
+        }
     }
 
     .prices-block {
@@ -298,10 +301,19 @@ export default {
 
     .list-products {
         margin: 0 30px 0 0;
+
+        @include max-width-550 {
+            margin: 0;
+        }
     }
 
     .list-product-info {
         margin: -4px 0 0 22px;
+
+        @include max-width-550 {
+            margin: 0 15px;
+            text-align: center;
+        }
     }
 
     .list-prices {
@@ -313,10 +325,26 @@ export default {
         border-bottom: 1px solid #d7d7d7;
         padding: 0 0 23px 0;
         margin: 0 0 30px 0;
+        
+        @include max-width-550 {
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 0 10px 0;
+        }
     }
 
     .list-product-img-block {
         position: relative;
+
+        @include max-width-850 {
+            width: 260px;
+            flex-shrink: 0;
+        }
+
+        @include max-width-550 {
+            margin: 0 auto;
+        }
+
     }
 
     .list-product-img-block img {
@@ -356,13 +384,23 @@ export default {
         font-weight: bold;
         border: none;
         outline: none;
-        background-color: $mainColor;
         width: 138px;
         height: 37px;
         text-transform: uppercase;
         color: #fff;
         background-color: $secondColor;
         cursor: pointer;
+
+        @include max-width-650 {
+            display: block;
+            margin: 10px 0 0 0;
+            width: 128px;
+        }
+
+        @include max-width-650 {
+            margin: 10px auto;
+            width: 100%;
+        }
     }
 
     .list-basket i {
