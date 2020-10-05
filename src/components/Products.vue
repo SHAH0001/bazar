@@ -174,6 +174,10 @@ export default {
 
     .product:hover .additional-options {
         display: flex;
+
+        @include max-width-650 {
+            display: none;
+        }
     }
 
     .additional-options {
