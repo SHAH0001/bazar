@@ -2,7 +2,7 @@
     <div>
         <div class="gallery-main-image-block">
             <img :src="galleryShowMainImage" alt="" />
-            <div>
+            <div v-if="additionalInformation">
                 <div class="gallery-more-about-product">
                     <div class="gallery-button-wrapper">
                         <button type="button" class="gallery-more-about-product-button gallery-more-about-product-button-heart">
@@ -47,27 +47,27 @@
         </div>
         <div class="gallery-content">
 
-            <button @click="galleryScrollLeft()" class="gallery-button gallery-button-left" type="button">
+            <button 
+                @click="previous()" 
+                class="gallery-button gallery-button-left" 
+                type="button"
+            >
                 <i class="icon-arrow-left"></i>
             </button>
 
             <div class="gallery-miniatures-block" id="galleryMiniaturesBlock">
-                <div 
-                    class="gallery-miniatures"
-                    :style="{'margin-left': -currentShift + 'px'}"
-                >
-                    <img 
-                        v-for="(item, index) in images" 
-                        :key="index" 
-                        :src="getImage(item.img)"
-                        @click="galleryChangeImage(item.img)" 
-                        class="top-seller-gallery-item" 
-                        alt="" 
-                    />
-                </div>
+                <Flickity ref="flickity" :options="flickityOptions">
+                    <div class="carousel-cell" v-for="item in images" :key="item.id">
+                        <img class="top-seller-gallery-item" @click="galleryChangeImage(item.img)" :src="getImage(item.img)" alt="">
+                    </div>
+                </Flickity>
             </div>
 
-            <button @click="galleryScrollRight()" class="gallery-button gallery-button-right" type="button">
+            <button 
+                @click="next()" 
+                class="gallery-button gallery-button-right" 
+                type="button"
+            >
                 <i class="icon-arrow-right"></i>
             </button>
 
@@ -77,15 +77,19 @@
 <script>
 import StarRating from '../StarRating'
 import mixins from '../../mixins/mixins'
+import Flickity from 'vue-flickity'
+
 
 export default {
     data() {
         return {
+            flickityOptions: {
+                initialIndex: 15,
+                prevNextButtons: false,
+                pageDots: false,
+                wrapAround: true
+            },
             startShowImage: false,
-            currentShift: 0,
-            currentWidthBlock: 0,
-            countPages: 0,
-            currentPage: 0,
         }
     },
     mixins: [mixins],
@@ -94,37 +98,17 @@ export default {
             type: Array,
             required: true
         },
-        pictureWidth: {
-            type: Number,
-            default: 70
+        additionalInformation: {
+            type: Boolean,
+            default: false,
         }
     },
     methods: {
-        galleryCurrentWidth() {
-            return this.currentWidthBlock = document.getElementById('galleryMiniaturesBlock').clientWidth
-        },
-        galleryScrollLeft() {
-            if(this.currentShift != 0) {
-                return this.currentShift -= this.currentWidthBlock
-            }
-            return
-        },
-        galleryScrollRight() {
-            let imagesWidth = this.images.length * this.pictureWidth / this.currentWidthBlock
-            
-            if(this.currentShift === 0) {
-                this.countPages = Math.ceil(imagesWidth)
-                this.currentPage = 1
-                return this.currentShift = this.currentWidthBlock
-            }
-            
-            if(this.currentPage++ >= this.countPages || this.currentPage >= this.countPages) {
-                return
-            }
-            else {
-                this.currentPage++
-                return this.currentShift += this.currentShift
-            }
+        next() {
+            this.$refs.flickity.next();
+        },    
+        previous() {
+            this.$refs.flickity.previous();
         },
         galleryChangeImage(image) {
             return this.startShowImage = image
@@ -139,16 +123,43 @@ export default {
         },
     },
     components: {
-        StarRating
-    },
-    mounted() {
-        this.galleryCurrentWidth()
-        window.addEventListener('resize', this.galleryCurrentWidth)
+        StarRating,
+        Flickity
     }
 }
 </script>
 <style lang="scss" scoped>
     @import '@/assets/scss/style';
+
+    .carousel-cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 15%;
+        height: 70px;
+        margin-right: 10px;
+        counter-increment: carousel-cell;
+       
+        @include max-width-1150 {
+            width: 20%;
+        }
+
+        @include max-width-850 {
+            width: 15%;
+        }
+
+        @include max-width-550 {
+            width: 30%;
+        }
+    }
+
+    .carousel-cell img {
+        height: 70px;
+
+        @include max-width-850 {
+            width: 100%;
+        }
+    }
 
     .gallery-button-wrapper {
         display: flex;

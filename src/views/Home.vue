@@ -16,7 +16,7 @@
                         <i class="icon-shopping-basket"></i>
                         add to cart
                     </button>
-                    <CountdownTimer></CountdownTimer>
+                    <CountdownTimer />
                 </div>
                 <div class="info-about-product">
                     <div class="info-about-product-wrapper">
@@ -77,6 +77,7 @@
                     <Tab name="Top seller" selected="true">
                         <Gallery
                             :images="products"
+                            :additionalInformation="true"
                         >
                         </Gallery>
                     </Tab>
@@ -669,7 +670,7 @@
     }
 
     .gallery-content {
-        display: flex;
+        // display: flex;
         position: relative;
         padding: 8px 0;
         border: 1px solid #e2e2e2;
@@ -679,8 +680,8 @@
     .top-seller-gallery-item {
         display: block;
         width: 70px;
-        height: 70px;
-        margin: 0 4px;
+        // height: 70px;
+        // margin: 0 4px;
     }
 
     .gallery-miniatures-block {
@@ -701,6 +702,7 @@
     .gallery-button {
         display: inline-block;
         position: absolute;
+        z-index: 100;
         top: 8px;
         width: 33px;
         height: 70px;
