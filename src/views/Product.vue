@@ -23,71 +23,113 @@
                 </Gallery>
             </div>
             
-            <div class="product-block-info">
-                
-                <div class="product-info-name-and-rating-wrapper">
-                    <div class="product-info-name-and-rating-left">
-                        <h3>Sunbaby Magic Bear Chair</h3>
-                        <StarRating :rating="2"></StarRating>
-                        <span class="product-info-reviews">(0 reviews)</span>
-                        <span>|</span>
-                        <span class="product-info-review">Add Your Review</span>
-                    </div>
-                    <div class="product-info-name-and-rating-right"></div>
-                </div>
+            <div class="product-block-info-wrapper">
 
-                <div class="product-prices-wrapper">
-                    <span class="product-price-old">$350.00</span>
-                    <span class="product-price-new">$250.00</span>
-                </div>
-
-                <div class="product-buttons-wrapper">
+                <div class="product-block-info">
                     
-                    <div class="product-buttons-top">
-                        <button type="button" class="list-basket">
-                            <i class="icon-shopping-basket"></i>
-                            <span>Add to cart</span>
-                        </button>
-                        <button class="button-product">
-                            <i class="icon-heart-o"></i>
-                        </button>
-                        <button class="button-product">
-                            <i class="icon-arrows-h"></i>
-                        </button>
-                        <button class="button-product">
-                            <i class="icon-envelope-o"></i>
-                        </button>
+                    <div class="product-info-name-and-rating-wrapper border-bottom">
+                        <div class="product-info-name-and-rating-left">
+                            <h3 class="product-info-title">Sunbaby Magic Bear Chair</h3>
+                            <div class="product-info-reviews">
+                                <StarRating :rating="2"></StarRating>
+                                <span>(0 reviews) |</span>
+                                <span>Add Your Review</span>
+                            </div>
+                        </div>
+                        <div class="product-info-name-and-rating-right"></div>
                     </div>
 
-                    <div class="product-buttons-bottom">
-                        <span>Quantity:</span>
-                        <span>2</span>
-                        <button class="button-product">
-                            <i class="icon-minus"></i>
-                        </button>
-                        <button class="button-product">
-                            <i class="icon-plus"></i>
-                        </button>
+                    <div class="product-prices-wrapper border-bottom">
+                        <span class="product-price-old">$350.00</span>
+                        <span class="product-price-new">$250.00</span>
                     </div>
 
-                </div>
+                    <div class="product-buttons-wrapper border-bottom">
+                        
+                        <div class="product-buttons-top">
+                            <button type="button" class="list-basket">
+                                <i class="icon-shopping-basket"></i>
+                                <span>Add to cart</span>
+                            </button>
+                            <button class="button-product">
+                                <i class="icon-heart-o"></i>
+                            </button>
+                            <button class="button-product">
+                                <i class="icon-arrows-h"></i>
+                            </button>
+                            <button class="button-product">
+                                <i class="icon-envelope-o"></i>
+                            </button>
+                        </div>
 
-                <div class="product-quick-overview-wrapper">
-                    <h4 class="product-quick-overview-title">Quick Overview</h4>
-                    <p class="product-quick-overview-description">
-                        Nam tristique porta ligula, vel viverra sem eleifend nec. Nulla sed purus augue, eu euis mod tellus. Nam mattis eros tis sagittis. Vestibulum suscipit cursus biben.
-                    </p>
-                </div>
+                        <div class="product-buttons-bottom">
+                            <span class="product-buttons-bottom-quantity-name">Quantity:</span>
+                            <span class="product-buttons-bottom-quantity-count">{{ countProduct }}</span>
+                            
+                            <button
+                                @click="productMinus()" 
+                                class="button-product minus"
+                            >
+                                <i class="icon-minus"></i>
+                            </button>
 
-                <div class="product-info-wrapper">
-                    <div class="availability">
-                        <span>Availability:</span>
-                        <span>In Stock</span>
+                            <button 
+                                @click="productPlus()" 
+                                class="button-product"
+                            >
+                                <i class="icon-plus"></i>
+                            </button>
+                        </div>
+
                     </div>
-                    <div class="category">
-                        <span>Category:</span>
-                        <span>Furniture</span>
+
+                    <div class="product-quick-overview-wrapper border-bottom">
+                        <h4 class="product-quick-overview-title">Quick Overview</h4>
+                        <p class="product-quick-overview-description">
+                            Nam tristique porta ligula, vel viverra sem eleifend nec. Nulla sed purus augue, eu euis mod tellus. Nam mattis eros tis sagittis. Vestibulum suscipit cursus biben.
+                        </p>
                     </div>
+
+                    <div class="product-information-wrapper border-bottom">
+                        <div class="availability">
+                            <span class="product-information-title">Availability:</span>
+                            <span class="product-information-text">In Stock</span>
+                        </div>
+                        <div class="category">
+                            <span class="product-information-title">Category:</span>
+                            <span class="product-information-text">Furniture</span>
+                        </div>
+                    </div>
+
+                    <div class="social-networks-wrapper">
+                        
+                        <router-link class="social-network-link" to="/" tag="a">
+                            <i style="color: #3b5998;" class="icon-facebook"></i>
+                            <span>Facebook</span>
+                        </router-link>
+                        
+                        <router-link class="social-network-link" to="/" tag="a">
+                            <i style="color: #d62d20;" class="icon-google-plus"></i>
+                            <span>Google+</span>
+                        </router-link>
+                        
+                        <router-link class="social-network-link" to="/" tag="a">
+                            <i style="color: #4099ff;" class="icon-twitter"></i>
+                            <span>Tweet</span>
+                        </router-link>
+                        
+                        <router-link class="social-network-link" to="/" tag="a">
+                            <i style="color: #c92228;" class="icon-pinterest-p"></i>
+                            <span>Pinterest</span>
+                        </router-link>
+                        
+                        <router-link class="social-network-link" to="/" tag="a">
+                            <i style="color: #0077b5;" class="icon-linkedin"></i>
+                            <span>Linkedin</span>
+                        </router-link>
+
+                    </div>
+
                 </div>
 
             </div>
@@ -136,6 +178,17 @@
                         img: 'product_8.jpg'
                     }
                 ],
+                countProduct: 2
+            }
+        },
+        methods: {
+            productMinus() {
+                if(this.countProduct > 0) {
+                    return this.countProduct--
+                }
+            },
+            productPlus() {
+                this.countProduct++
             }
         },
         components: {
@@ -144,8 +197,18 @@
         },
     }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
     @import '@/assets/scss/style';
+
+    .product-block-gallery .carousel-cell {
+        @include min-width-1191 {
+            width: 25%;
+        }
+    }
+
+    .top-seller-gallery-item {
+        width: 100%;
+    }
 
     #main-wrapper {
         margin: 0 23px 0 7px;
@@ -186,11 +249,136 @@
     .product-block {
         display: flex;
         border: 1px solid #c2c2c2;
+        padding: 0 0 70px 0;
     }
 
     .product-block-gallery {
         margin: 18px 0 0 19px;
-        width: 72%;
+        width: 63%;
+    }
+
+    .product-info-title {
+        font-size: 22px;
+        margin: 18px 0 5px 0;
+    }
+
+    #star-rating {
+        display: inline-block;
+    }
+
+    .product-info-reviews {
+        font-size: 12px;
+        color: #676767;
+        padding: 0 0 15px 0;
+    }
+
+    .product-info-reviews span:nth-child(2) {
+        padding: 0 15px 0 8px;
+    }
+
+    .product-block-info-wrapper {
+
+    }
+
+    .product-block-info {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .product-prices-wrapper {
+        margin: 23px 0 0 0;
+        padding: 0 0 24px 0;
+    }
+
+    .product-price-old {
+        font-size: 20px;
+        font-weight: normal;
+        color: #939393;
+        text-decoration: line-through;
+    }
+
+    .product-price-new {
+        display: inline-block;
+        font-size: 22px;
+        font-weight: bold;
+        color: #fff;
+        background-color: $mainColor;
+        padding: 0 7px;
+        margin: 0px 0 0 8px;
+    }
+
+    .product-buttons-wrapper {
+        margin: 21px 0 0 0;
+    }
+    
+    .product-buttons-top {
+        display: flex;
+        align-items: center;
+    }
+
+    .product-buttons-top button {
+        margin: 0 8px 0 0;
+    }
+
+    .product-buttons-bottom {
+        font-size: 14px;
+        margin: 22px 0 0 0;
+        padding: 0 0 23px 0;
+    }
+
+    .product-buttons-bottom-quantity-name {
+
+    }
+
+    .product-buttons-bottom-quantity-count {
+        border: 1px solid $mainColor;
+        padding: 7px 30px 8px 30px;
+        margin: 0 11px 0 30px;
+    }
+
+    .minus {
+        margin: 0 10px 0 0;
+    }
+
+    .product-quick-overview-wrapper {
+        padding: 0 0 16px 0;
+    }
+
+    .product-quick-overview-title {
+        font-size: 15px;
+        margin: 18px 0 0 0;
+    }
+
+    .product-quick-overview-description {
+        font-size: 14px;
+        color: #676767;
+        margin: 7px 0 0 0;
+        line-height: 25px;
+    }
+
+    .product-information-wrapper {
+        margin: 17px 0 0 0;
+        padding: 0 0 15px 0;
+    }
+
+    .availability {
+
+    }
+
+    .category {
+        margin: 10px 0 0 0;
+    }
+
+    .product-information-title {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .product-information-text {
+        display: inline-block;
+        font-size: 13px;
+        color: #676767;
+        margin: 0 0 0 12px;
     }
 
     .list-basket {
@@ -198,7 +386,7 @@
         font-weight: bold;
         border: none;
         outline: none;
-        width: 138px;
+        width: 134px;
         height: 37px;
         text-transform: uppercase;
         color: #fff;
@@ -223,6 +411,35 @@
 
     .list-basket span {
         margin: 0 0 0 7px;
+    }
+
+    .social-networks-wrapper {
+        margin: 24px 0 0 0;
+    }
+
+    .social-network-link {
+        display: inline-block;
+        font-size: 13px;
+        color: #888888;
+        border: 1px solid $mainColor;
+        text-decoration: none;
+        background-color: #fff;
+        padding: 11px 6px;
+        margin: 0 5px 0 0;
+    }
+
+    .social-network-link i {
+        display: inline-block;
+        margin: 0 0 0 6px;;
+    }
+
+    .social-network-link span {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid #cccccc;
     }
 
 </style>
