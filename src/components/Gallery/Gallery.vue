@@ -79,7 +79,6 @@ import StarRating from '../StarRating'
 import mixins from '../../mixins/mixins'
 import Flickity from 'vue-flickity'
 
-
 export default {
     data() {
         return {
@@ -87,7 +86,7 @@ export default {
                 initialIndex: 15,
                 prevNextButtons: false,
                 pageDots: false,
-                wrapAround: true
+                wrapAround: true,
             },
             startShowImage: false,
         }
@@ -138,7 +137,6 @@ export default {
         width: 15%;
         height: 70px;
         margin-right: 10px;
-        counter-increment: carousel-cell;
        
         @include max-width-1150 {
             width: 20%;

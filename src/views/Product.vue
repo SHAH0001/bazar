@@ -29,7 +29,7 @@
                     
                     <div class="product-info-name-and-rating-wrapper border-bottom">
                         <div class="product-info-name-and-rating-left">
-                            <h3 class="product-info-title">Sunbaby Magic Bear Chair</h3>
+                            <h3 class="product-info-name">Sunbaby Magic Bear Chair</h3>
                             <div class="product-info-reviews">
                                 <StarRating :rating="2"></StarRating>
                                 <span>(0 reviews) |</span>
@@ -202,7 +202,7 @@
 
     .product-block-gallery .carousel-cell {
         @include min-width-1191 {
-            width: 25%;
+            width: 30%;
         }
     }
 
@@ -257,7 +257,7 @@
         width: 63%;
     }
 
-    .product-info-title {
+    .product-info-name{
         font-size: 22px;
         margin: 18px 0 5px 0;
     }
@@ -440,6 +440,53 @@
 
     .border-bottom {
         border-bottom: 1px solid #cccccc;
+    }
+
+    .product-block-gallery .gallery-main-image-block img {
+        height: 492px;
+    }
+
+    .product-block-gallery .gallery-content {
+        padding: 15px 0 0 0;
+    }
+
+    .product-block-gallery .gallery-button {
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        color: $mainColor;
+        border: 1px solid $mainColor;
+        top: 51px;
+    }
+
+    .product-block-gallery .gallery-button:hover {
+        background-color: $secondColor;
+        border: 1px solid $secondColor;
+        color: #fff;
+    }
+
+    .product-block-gallery .gallery-button-left {
+        left: -1px;
+    }
+
+    .product-block-gallery .gallery-button-right {
+        right: -1px;
+    }
+
+    .flickity-enabled.is-draggable .flickity-viewport {
+        height: 100px !important; 
+    }
+
+    .product-block-gallery .carousel-cell {
+        height: 100%;
+    }
+    
+    .product-block-gallery .carousel-cell img {
+        height: 100px;
+    }
+
+    .product-block-gallery .gallery-content {
+        border: none;
     }
 
 </style>
