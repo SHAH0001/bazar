@@ -397,7 +397,7 @@ export default {
         height: 37px;
         text-transform: uppercase;
         color: #fff;
-        background-color: $secondColor;
+        background-color: $mainColor;
         cursor: pointer;
 
         @include max-width-650 {

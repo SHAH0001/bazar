@@ -22,11 +22,8 @@
                 >
                 </Gallery>
             </div>
-            
             <div class="product-block-info-wrapper">
-
-                <div class="product-block-info">
-                    
+                <div class="product-block-info">               
                     <div class="product-info-name-and-rating-wrapper border-bottom">
                         <div class="product-info-name-and-rating-left">
                             <h3 class="product-info-name">Sunbaby Magic Bear Chair</h3>
@@ -38,16 +35,13 @@
                         </div>
                         <div class="product-info-name-and-rating-right"></div>
                     </div>
-
                     <div class="product-prices-wrapper border-bottom">
                         <span class="product-price-old">$350.00</span>
                         <span class="product-price-new">$250.00</span>
                     </div>
-
                     <div class="product-buttons-wrapper border-bottom">
-                        
                         <div class="product-buttons-top">
-                            <button type="button" class="list-basket">
+                            <button type="button" class="product-list-basket">
                                 <i class="icon-shopping-basket"></i>
                                 <span>Add to cart</span>
                             </button>
@@ -61,18 +55,15 @@
                                 <i class="icon-envelope-o"></i>
                             </button>
                         </div>
-
                         <div class="product-buttons-bottom">
                             <span class="product-buttons-bottom-quantity-name">Quantity:</span>
                             <span class="product-buttons-bottom-quantity-count">{{ countProduct }}</span>
-                            
                             <button
                                 @click="productMinus()" 
                                 class="button-product minus"
                             >
                                 <i class="icon-minus"></i>
                             </button>
-
                             <button 
                                 @click="productPlus()" 
                                 class="button-product"
@@ -80,16 +71,13 @@
                                 <i class="icon-plus"></i>
                             </button>
                         </div>
-
                     </div>
-
                     <div class="product-quick-overview-wrapper border-bottom">
                         <h4 class="product-quick-overview-title">Quick Overview</h4>
                         <p class="product-quick-overview-description">
                             Nam tristique porta ligula, vel viverra sem eleifend nec. Nulla sed purus augue, eu euis mod tellus. Nam mattis eros tis sagittis. Vestibulum suscipit cursus biben.
                         </p>
                     </div>
-
                     <div class="product-information-wrapper border-bottom">
                         <div class="availability">
                             <span class="product-information-title">Availability:</span>
@@ -100,9 +88,7 @@
                             <span class="product-information-text">Furniture</span>
                         </div>
                     </div>
-
                     <div class="social-networks-wrapper">
-                        
                         <router-link class="social-network-link" to="/" tag="a">
                             <i style="color: #3b5998;" class="icon-facebook"></i>
                             <span>Facebook</span>
@@ -127,13 +113,9 @@
                             <i style="color: #0077b5;" class="icon-linkedin"></i>
                             <span>Linkedin</span>
                         </router-link>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     </div>
 </template>
@@ -222,6 +204,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @include max-width-430 {
+            flex-direction: column;
+        }
     }
 
     .product-header-title {
@@ -229,6 +215,7 @@
         font-weight: bold;
         text-transform: uppercase;
         margin: 30px 0;
+
     }
 
     .product-header-items {
@@ -236,6 +223,10 @@
         margin: 0;
         padding: 0;
         list-style: none;
+
+        @include max-width-430 {
+            margin-bottom: 30px;
+        }
     }
 
     .product-header-items a {
@@ -244,17 +235,53 @@
         color: $mainColor;
         text-decoration: none;
         margin: 0 0 0 18px;
+
+        @include max-width-430 {
+            margin: 0 10px;
+        }
     }
 
     .product-block {
         display: flex;
         border: 1px solid #c2c2c2;
         padding: 0 0 70px 0;
+
+        @include max-width-850 {
+            justify-content: space-between;    
+        }
+
+        @include max-width-750 {
+            flex-direction: column;    
+        }
     }
 
     .product-block-gallery {
         margin: 18px 0 0 19px;
         width: 63%;
+
+        @include max-width-950 {
+            width: 100%;    
+        }
+
+        @include max-width-850 {
+            width: 45%;    
+        }
+
+        @include max-width-750 {
+            width: 100%; 
+            padding: 20px;
+            margin: 0;
+        }
+    }
+
+    .product-block-info-wrapper {
+        @include max-width-850 {
+            width: 50%;    
+        }
+
+        @include max-width-750 {
+            width: 100%; 
+        }
     }
 
     .product-info-name{
@@ -262,7 +289,7 @@
         margin: 18px 0 5px 0;
     }
 
-    #star-rating {
+    .product-info-reviews #star-rating {
         display: inline-block;
     }
 
@@ -334,6 +361,10 @@
         border: 1px solid $mainColor;
         padding: 7px 30px 8px 30px;
         margin: 0 11px 0 30px;
+
+        @include max-width-430 {
+            margin: 0 11px;
+        }
     }
 
     .minus {
@@ -361,10 +392,6 @@
         padding: 0 0 15px 0;
     }
 
-    .availability {
-
-    }
-
     .category {
         margin: 10px 0 0 0;
     }
@@ -381,7 +408,7 @@
         margin: 0 0 0 12px;
     }
 
-    .list-basket {
+    .product-list-basket {
         display: inline-block;
         font-weight: bold;
         border: none;
@@ -392,29 +419,23 @@
         color: #fff;
         background-color: $secondColor;
         cursor: pointer;
-
-        @include max-width-650 {
-            display: block;
-            margin: 10px 0 0 0;
-            width: 128px;
-        }
-
-        @include max-width-650 {
-            margin: 10px auto;
-            width: 100%;
-        }
     }
 
-    .list-basket i {
+    .product-list-basket i {
         font-size: 15px;
     }
 
-    .list-basket span {
+    .product-list-basket span {
         margin: 0 0 0 7px;
     }
 
     .social-networks-wrapper {
         margin: 24px 0 0 0;
+
+        @include max-width-1150 {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     .social-network-link {
@@ -426,6 +447,10 @@
         background-color: #fff;
         padding: 11px 6px;
         margin: 0 5px 0 0;
+
+        @include max-width-1150 {
+            margin: 0 0 15px 0;
+        }
     }
 
     .social-network-link i {
@@ -444,6 +469,18 @@
 
     .product-block-gallery .gallery-main-image-block img {
         height: 492px;
+
+        @include max-width-1190 {
+            height: auto;
+        }
+
+        @include max-width-750 {
+            height: 400px;
+        }
+
+         @include max-width-430 {
+            height: auto;
+        }
     }
 
     .product-block-gallery .gallery-content {
@@ -479,6 +516,22 @@
 
     .product-block-gallery .carousel-cell {
         height: 100%;
+
+        @include max-width-1150 {
+            width: 30%;
+        }
+
+        @include max-width-750 {
+            width: 15%;
+        }
+
+        @include max-width-650 {
+            width: 30%;
+        }
+
+        @include max-width-430 {
+            width: 50%;
+        }
     }
     
     .product-block-gallery .carousel-cell img {

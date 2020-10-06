@@ -138,8 +138,12 @@ export default {
         height: 70px;
         margin-right: 10px;
        
+       @include max-width-1190 {
+            width: 40%;
+        }
+
         @include max-width-1150 {
-            width: 20%;
+            width: 30%;
         }
 
         @include max-width-850 {
