@@ -117,11 +117,80 @@
                 </div>
             </div>
         </div>
+        <div class="product-tabs">
+            <Tabs>
+                <Tab name="Description">
+                    <h3>Some description</h3>
+                </Tab>
+                <Tab name="Review" selected="true">
+                    <div class="review-wrapper">
+                        <div class="review">
+                            <h4 class="review-this-product">There are no reviews for this product.</h4>
+                            <h4 class="add-review">Add a review</h4>
+                            <h4 class="your-rating">Your Rating</h4>
+                            <div class="rating">
+                                <span class="bad">Bad</span>
+                                <StarRating :rating="5"></StarRating>
+                                <span class="good">Good</span>
+                            </div>
+                            <form action="#" method="post">
+                                <div class="review-form">
+                                    <div class="form-control-textarea row-1">
+                                        <label for="review">Your Review</label>
+                                        <textarea 
+                                            id="review" 
+                                            cols="30" 
+                                            rows="5"
+                                            name="review" 
+                                        ></textarea>
+                                    </div>
+                                    <div class="form-control-inputs">
+                                        <input 
+                                            type="text" 
+                                            required 
+                                            placeholder="Name*"
+                                            class="form-control-input name"
+                                        />
+                                        <input 
+                                            type="text" 
+                                            required 
+                                            placeholder="Email*"
+                                            class="form-control-input"
+                                        />
+                                        <button 
+                                            type="submit"
+                                            class="form-control-button"
+                                        >
+                                            Continue
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </Tab>
+                <Tab name="Specification">
+                    <h3>Some specification</h3>
+                </Tab>
+                <Tab name="Custom tab">
+                    <h3>Some custom tab</h3>
+                </Tab>
+            </Tabs>
+        </div>
+        <SortingDisplay
+            :title="'New furniture'"
+            :enabledPoints="true"
+        ></SortingDisplay>
+        <Products :data="products"></Products>
     </div>
 </template>
 <script>
     import StarRating from '../components/StarRating'
+    import SortingDisplay from '../components/SortingDisplay'
     import Gallery from '../components/Gallery/Gallery'
+    import Tab from '../components/Tabs/Tab'
+    import Tabs from '../components/Tabs/Tabs'
+    import Products from '../components/Products'
 
     export default {
         data() {
@@ -160,7 +229,49 @@
                         img: 'product_8.jpg'
                     }
                 ],
-                countProduct: 2
+                countProduct: 2,
+                products: [
+                    {
+                        id: 1,
+                        sale: Math.floor(Math.random() * Math.floor(2)),
+                        img: 'product_1.jpg',
+                        name: 'Aenean Ru Bristique',
+                        rating: Math.floor(Math.random() * Math.floor(6)),
+                        oldPrice: 30.00,
+                        newPrice: Math.floor(Math.random() * Math.floor(50)),
+                        description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
+                    },
+                    {
+                        id: 2,
+                        sale: Math.floor(Math.random() * Math.floor(2)),
+                        img: 'product_2.jpg',
+                        name: 'Aenean Ru Bristique',
+                        rating: Math.floor(Math.random() * Math.floor(6)),
+                        oldPrice: false,
+                        newPrice: Math.floor(Math.random() * Math.floor(50)),
+                        description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
+                    },
+                    {
+                        id: 3,
+                        sale: Math.floor(Math.random() * Math.floor(2)),
+                        img: 'product_3.jpg',
+                        name: 'Aenean Ru Bristique',
+                        rating: Math.floor(Math.random() * Math.floor(6)),
+                        oldPrice: false,
+                        newPrice: Math.floor(Math.random() * Math.floor(50)),
+                        description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
+                    },
+                    {
+                        id: 4,
+                        sale: Math.floor(Math.random() * Math.floor(2)),
+                        img: 'product_4.jpg',
+                        name: 'Aenean Ru Bristique',
+                        rating: Math.floor(Math.random() * Math.floor(6)),
+                        oldPrice: false,
+                        newPrice: Math.floor(Math.random() * Math.floor(50)),
+                        description: 'Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and youre ready.'
+                    }
+                ]
             }
         },
         methods: {
@@ -175,7 +286,11 @@
         },
         components: {
             StarRating,
-            Gallery
+            Gallery,
+            Tab,
+            Tabs,
+            SortingDisplay,
+            Products
         },
     }
 </script>
@@ -303,10 +418,6 @@
         padding: 0 15px 0 8px;
     }
 
-    .product-block-info-wrapper {
-
-    }
-
     .product-block-info {
         width: 90%;
         margin: 0 auto;
@@ -351,10 +462,6 @@
         font-size: 14px;
         margin: 22px 0 0 0;
         padding: 0 0 23px 0;
-    }
-
-    .product-buttons-bottom-quantity-name {
-
     }
 
     .product-buttons-bottom-quantity-count {
@@ -541,5 +648,172 @@
     .product-block-gallery .gallery-content {
         border: none;
     }
+
+    .product-tabs {
+        border: 1px solid #c2c2c2;
+        margin: 30px 0 51px 0;
+        padding: 0 0 67px 0;
+    }
+
+    .product-tabs .tabs {
+        margin: 0;
+    }
+
+    .product-tabs .tabs-items {
+        @include max-width-950 {
+            flex-direction: column;
+        }
+    }
+
+    .product-tabs .tabs-item {
+        font-size: 16px;
+        width: 13.5%;
+        padding: 13px 0;
+        border-top: none;
+
+        @include max-width-1190 {
+            width: 100%;
+        }
+    }
+
+    .product-tabs .tabs-is-active {
+        background-color: #fff;
+
+    }
+
+    .tabs-is-active::before {
+        display: none;
+    }
+
+    .review-wrapper {
+
+    }
+
+    .review {
+        width: 94%;
+        margin: 27px auto 0 auto;
+        color: #676767;
+    }
+
+    .review-this-product {
+        font-size: 14px;
+        // color: #676767;
+        margin: 0;
+    }
+
+    .add-review {
+        font-size: 15px;
+        font-weight: 500;
+        color: #454545;
+        margin: 26px 0 0 0;
+    }
+
+    .your-rating {
+        font-size: 14px;
+        // color: #676767;
+        margin: 25px 0 0 0;
+    }
+
+    .rating {
+        margin: 6px 0 0 0;
+    }
+
+    .bad {
+        display: inline-block;
+        margin: 0 20px 0 0;
+    }
+
+    .good {
+        display: inline-block;
+        margin: 0 0 0 20px;
+    }
+
+    .review #star-rating {
+        display: inline-block;
+        margin: 0 0 0 0;
+    }
+
+    .review #star-rating i {
+        color: $secondColor;
+    }
+
+    .review-form {
+        margin: 22px 0 0 0;
+    }
+
+    .form-control-textarea {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-control-textarea label {
+        display: inline-block;
+        font-size: 14px;
+        // color: #676767;
+        margin: 0 0 4px 0;
+    }
+
+    .form-control-textarea textarea {
+        border: 1px solid #c2c2c2;
+        outline: none;
+        resize: none;
+        font-size: 14px;
+        // color: #676767;
+        padding: 14px 0 0 14px; 
+    }
+
+    .form-control-inputs {
+        margin: 12px 0 0 0;
+
+        @include max-width-1190 {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .name {
+        margin: 0 18px 0 0;
+
+        @include max-width-1190 {
+            margin: 0;
+        }
+    }
+
+    .form-control-input {
+        font-size: 14px;
+        width: 42%;
+        // color: #676767;
+        border: 1px solid #cecece;
+        outline: none;
+        padding: 19px 0 19px 14px;
+
+        @include max-width-1190 {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+    .form-control-button {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+        text-transform: uppercase;
+        background-color: $mainColor;
+        padding: 20px 30px;
+        margin: 0 0 0 15px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        @include max-width-1190 {
+            margin: 0;
+        }
+    }
+
+    .product-similar {
+        margin: 0 0 0 0;
+    }
+
 
 </style>
