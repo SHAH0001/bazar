@@ -61,15 +61,12 @@
             </div>
         </SortingDisplay>
         <Products :data="products"></Products>
-
         <div class="furniture-gallery-block">
-            
             <div class="furniture-gallery-left">
                 <SortingDisplay 
                     :title="'Furniture gallery'"
                 >
                 </SortingDisplay>
-
                 <Tabs>
                     <Tab name="Featured">
                         <h3>Some information about Featured</h3>
@@ -88,9 +85,7 @@
                         <h3>Some information about top rated</h3>
                     </Tab>
                 </Tabs>
-
             </div>
-
             <div class="furniture-gallery-right">
                 <img :src="getImage('bedroom-bed.jpg')" alt="">
                 <div class="furniture-gallery-right-info">
@@ -108,26 +103,20 @@
                     </router-link>
                 </div>
             </div>
-            
         </div>
-
         <SortingDisplay 
             :title="'Latest blog'"
             :enabledPoints="true"
         >
         </SortingDisplay>
-
         <Articles></Articles>
-
         <Brands style="margin-bottom: 52px;" :brands="brands"></Brands>
-
         <SortingDisplay 
             :whatSortShow="'tabs'" 
             :enabledPoints="true" 
             :title="'Client feedback'"
         >
         </SortingDisplay>
-
         <div class="feedback">
             <i class="icon-quote-right"></i>
             <p class="feedback-description">
@@ -141,7 +130,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 <script>
@@ -670,7 +658,6 @@
     }
 
     .gallery-content {
-        // display: flex;
         position: relative;
         padding: 8px 0;
         border: 1px solid #e2e2e2;
@@ -680,8 +667,6 @@
     .top-seller-gallery-item {
         display: block;
         width: 70px;
-        // height: 70px;
-        // margin: 0 4px;
     }
 
     .gallery-miniatures-block {
@@ -808,7 +793,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        // text-align: center;
         padding: 30px 0 62px 0;
     }
 
@@ -835,7 +819,6 @@
         height: 52px;
         border-radius: 3px;
         background-color: #676767;
-        // margin: 0 0 0 0;
     }
 
     .feedback-user-info {

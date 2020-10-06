@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <div class="sorting-tabs" v-if="whatSortShow === 'tabs'">
             <h3 class="sorting-tabs-title">{{title}}</h3>
             <div class="tabs">
@@ -12,11 +11,8 @@
                 <div class="point"></div>
             </div>
         </div>
-
         <div class="sorting-sort-by" v-else-if="whatSortShow === 'sortBy'">
-            
             <h3 class="sort-by-title">{{ title }}</h3>
-            
             <div class="sort-by-block">
                 <span class="sort-by-name">Sort By</span>
                 <select class="sort-by-select sort-by">
@@ -24,7 +20,6 @@
                     <option>Price: Hight first</option>
                 </select>
             </div>
-            
             <div class="show-block">
                 <span class="sort-by-name">Show</span>
                 <select class="sort-by-select show-number">
@@ -33,9 +28,7 @@
                     <option>48</option>
                 </select>
             </div>
-
-            <div class="way-display-block">
-                
+            <div class="way-display-block">  
                 <div @click="gridShow()" class="grid">
                     <div class="grid-wrapper">
                         <div class="grid-top-block">
@@ -48,7 +41,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div @click="listShow()" class="list">
                     <div class="list-row">
                         <div class="list-point" :class="{'active-grid': !grid}"></div>
@@ -63,10 +55,8 @@
                         <div class="list-line" :class="{'active-grid': !grid}"></div>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
 </template>
 <script>
@@ -249,12 +239,10 @@
         margin: 0 0 0 5px;
 
         @include max-width-1190 {
-            // margin: 0 0 20px 0;
             margin: 0;
         }
 
         @include max-width-650 {
-            // margin: 0 0 20px 0;
             margin: 0 0 20px 0;
         }
     }
@@ -323,10 +311,6 @@
         width: 67px;
         border: 1px solid #b7b7b7;
         padding: 5px 0;
-
-        @include max-width-650 {
-            // padding: 5px 0;
-        }
     }
 
     .grid-top-block,

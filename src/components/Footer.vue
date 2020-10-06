@@ -155,8 +155,6 @@ export default {
     
         @include max-width-750 {
             flex-wrap: wrap;
-            // flex-direction: column;
-            // justify-content: center;
         }
     }
 
@@ -168,7 +166,6 @@ export default {
 
         @include max-width-750 {
             width: 100%;
-            // margin: 0;
         }
     }
 

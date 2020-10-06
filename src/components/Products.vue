@@ -86,11 +86,6 @@ import StarRating from './StarRating'
 import mixins from '../mixins/mixins'
 
 export default {
-    data() {
-        return {
-            
-        }
-    },
     mixins: [mixins],
     methods: {
     },
@@ -353,7 +348,6 @@ export default {
         @include max-width-550 {
             margin: 0 auto;
         }
-
     }
 
     .list-product-img-block img {

@@ -685,10 +685,6 @@
         display: none;
     }
 
-    .review-wrapper {
-
-    }
-
     .review {
         width: 94%;
         margin: 27px auto 0 auto;
@@ -697,7 +693,6 @@
 
     .review-this-product {
         font-size: 14px;
-        // color: #676767;
         margin: 0;
     }
 
@@ -710,7 +705,6 @@
 
     .your-rating {
         font-size: 14px;
-        // color: #676767;
         margin: 25px 0 0 0;
     }
 
@@ -749,7 +743,6 @@
     .form-control-textarea label {
         display: inline-block;
         font-size: 14px;
-        // color: #676767;
         margin: 0 0 4px 0;
     }
 
@@ -758,7 +751,6 @@
         outline: none;
         resize: none;
         font-size: 14px;
-        // color: #676767;
         padding: 14px 0 0 14px; 
     }
 
@@ -782,7 +774,6 @@
     .form-control-input {
         font-size: 14px;
         width: 42%;
-        // color: #676767;
         border: 1px solid #cecece;
         outline: none;
         padding: 19px 0 19px 14px;
@@ -814,6 +805,5 @@
     .product-similar {
         margin: 0 0 0 0;
     }
-
 
 </style>
